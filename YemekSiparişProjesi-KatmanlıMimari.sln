@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35514.174 d17.12
+VisualStudioVersion = 17.12.35514.174
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsApp1", "WinFormsApp1\WinFormsApp1.csproj", "{6A54CE7E-3831-4699-9420-D7EFDF0EE391}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YemekSiparişProjesi-KatmanlıMimari.DataAccess", "YemekSiparişProjesi-KatmanlıMimari.DataAccess\YemekSiparişProjesi-KatmanlıMimari.DataAccess.csproj", "{4F7A8B84-DE3C-432E-9508-E8DCD6DFDF86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YemekSiparişProjesi-KatmanlıMimari.UI", "YemekSiparişProjesi-KatmanlıMimari.UI\YemekSiparişProjesi-KatmanlıMimari.UI.csproj", "{1218CEB1-500E-44BD-A970-FDF06964BD6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YemekSiparişProjesi-KatmanlıMimari.Business", "YemekSiparişProjesi-KatmanlıMimari.Business\YemekSiparişProjesi-KatmanlıMimari.Business.csproj", "{7FC0F611-869A-449F-9BD2-3C97E44321E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YemekSiparişProjesi-KatmanlıMimari.Entites", "YemekSiparişProjesi-KatmanlıMimari.Entites\YemekSiparişProjesi-KatmanlıMimari.Entites.csproj", "{8F246D7B-B4D0-4344-B7B0-BDF9F37C22B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6A54CE7E-3831-4699-9420-D7EFDF0EE391}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6A54CE7E-3831-4699-9420-D7EFDF0EE391}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6A54CE7E-3831-4699-9420-D7EFDF0EE391}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6A54CE7E-3831-4699-9420-D7EFDF0EE391}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F7A8B84-DE3C-432E-9508-E8DCD6DFDF86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F7A8B84-DE3C-432E-9508-E8DCD6DFDF86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F7A8B84-DE3C-432E-9508-E8DCD6DFDF86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F7A8B84-DE3C-432E-9508-E8DCD6DFDF86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1218CEB1-500E-44BD-A970-FDF06964BD6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1218CEB1-500E-44BD-A970-FDF06964BD6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1218CEB1-500E-44BD-A970-FDF06964BD6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1218CEB1-500E-44BD-A970-FDF06964BD6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FC0F611-869A-449F-9BD2-3C97E44321E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FC0F611-869A-449F-9BD2-3C97E44321E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FC0F611-869A-449F-9BD2-3C97E44321E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FC0F611-869A-449F-9BD2-3C97E44321E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F246D7B-B4D0-4344-B7B0-BDF9F37C22B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F246D7B-B4D0-4344-B7B0-BDF9F37C22B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F246D7B-B4D0-4344-B7B0-BDF9F37C22B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F246D7B-B4D0-4344-B7B0-BDF9F37C22B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
