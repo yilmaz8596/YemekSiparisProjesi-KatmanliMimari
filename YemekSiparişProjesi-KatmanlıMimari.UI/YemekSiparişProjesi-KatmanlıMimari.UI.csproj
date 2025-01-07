@@ -9,4 +9,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\YemekSiparişProjesi-KatmanlıMimari.Business\YemekSiparişProjesi-KatmanlıMimari.Business.csproj" />
+    <ProjectReference Include="..\YemekSiparişProjesi-KatmanlıMimari.Entites\YemekSiparişProjesi-KatmanlıMimari.Entites.csproj" />
+  </ItemGroup>
+
 </Project>

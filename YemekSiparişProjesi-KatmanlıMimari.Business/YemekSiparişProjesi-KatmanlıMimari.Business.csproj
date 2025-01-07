@@ -8,7 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Abstractions\" />
+    <ProjectReference Include="..\YemekSiparişProjesi-KatmanlıMimari.DataAccess\YemekSiparişProjesi-KatmanlıMimari.DataAccess.csproj" />
+    <ProjectReference Include="..\YemekSiparişProjesi-KatmanlıMimari.Entites\YemekSiparişProjesi-KatmanlıMimari.Entites.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Repositories
 {
-    internal class MenuItemRepository
+    internal class DishRepository
     {
     }
 }

@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace YemekSiparişProjesi_KatmanlıMimari.Entites.Abstractions
 {
-    internal class BaseEntity
+    public abstract class BaseEntity
     {
+        protected BaseEntity()
+        {
+            ID= Guid.NewGuid();
+        }
+        public Guid ID { get; set; }
+        public bool IsActive { get; set; }
+        public DateTime CreateDate { get; set; }
+
     }
 }

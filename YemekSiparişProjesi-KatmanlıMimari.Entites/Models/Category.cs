@@ -7,12 +7,9 @@ using YemekSiparişProjesi_KatmanlıMimari.Entites.Abstractions;
 
 namespace YemekSiparişProjesi_KatmanlıMimari.Entites.Models
 {
-    public class Cart : BaseEntity
+    public class Category : BaseEntity
     {
-        public int ID { get; set; }
-        public int UserID { get; set; }
-        public int OrderID { get; set; }
-        public User? User { get; set; } 
-
+        public string? CategoryName { get; set; }
+        public ICollection<Dish>? Dishes { get; set; }
     }
 }

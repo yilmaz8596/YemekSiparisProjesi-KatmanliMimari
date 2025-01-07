@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YemekSiparişProjesi_KatmanlıMimari.Business.Services
+namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Repositories
 {
-    public class CartService
+    internal class OrderDetailRepository
     {
     }
 }

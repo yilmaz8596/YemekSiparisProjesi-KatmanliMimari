@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace YemekSiparişProjesi_KatmanlıMimari.Business.Validators
 {
-    internal class MenuItemValidator
+    internal class DishValidator
     {
     }
 }
