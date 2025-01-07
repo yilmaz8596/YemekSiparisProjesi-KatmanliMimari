@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\YemekSiparişProjesi-KatmanlıMimari.DataAccess\YemekSiparişProjesi-KatmanlıMimari.DataAccess.csproj" />
     <ProjectReference Include="..\YemekSiparişProjesi-KatmanlıMimari.Entites\YemekSiparişProjesi-KatmanlıMimari.Entites.csproj" />
   </ItemGroup>
