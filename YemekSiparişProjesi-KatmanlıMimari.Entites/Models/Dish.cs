@@ -15,5 +15,6 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Entites.Models
         public string? ImageUrl { get; set; }
         public Category? Categories { get; set; }
         public Guid CategoryID   { get; set; }
+        public ICollection<OrderDetail>? OrderDetails { get; set; } // Bir yemek birden fazla sipariş detayına sahip olabilir.
     }
 }

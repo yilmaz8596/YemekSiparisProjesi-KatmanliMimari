@@ -13,6 +13,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Entites.Models
         public Decimal TotalAmount { get; set; }
         public User? User { get; set; }
         public Guid UserID { get; set; }
-        public ICollection<OrderDetail>? OrderDetails { get; set; }
+        public ICollection<OrderDetail>? OrderDetails { get; set; } // OrderDetail sınıfı ile ilişki kuruldu.
+        public ICollection<Payment>? Payments { get; set; } // Payment sınıfı ile ilişki kuruldu.
     }
 }

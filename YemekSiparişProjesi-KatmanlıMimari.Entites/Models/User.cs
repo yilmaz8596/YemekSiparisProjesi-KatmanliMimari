@@ -16,5 +16,6 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Entites.Models
         public string? PhoneNumber { get; set; }
         public string? Email { get; set; }
         public ICollection<Order>? Orders { get; set; }
+        public ICollection<Cart>? Carts { get; set; }
     }
 }

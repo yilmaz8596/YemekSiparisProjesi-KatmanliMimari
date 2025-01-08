@@ -11,10 +11,15 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Entites.Abstractions
         protected BaseEntity()
         {
             ID= Guid.NewGuid();
+            CreateDate = DateTime.Now; // Bağımsız zaman dilimi
+            IsActive = true; // Default olarak true
         }
         public Guid ID { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreateDate { get; set; }
+        public DateTime? UpdateDate { get; set; } // Opsiyonel olarak güncelleme tarihi
+        public Guid? CreatedBy { get; set; } // Oluşturan kişi
+        public Guid? ModifiedBy { get; set; } // Düzenleyen kişi
 
     }
 }
