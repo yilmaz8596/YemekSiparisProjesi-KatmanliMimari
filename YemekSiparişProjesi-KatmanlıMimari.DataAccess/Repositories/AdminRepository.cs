@@ -8,29 +8,29 @@ using YemekSiparişProjesi_KatmanlıMimari.Entites.Models;
 
 namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Repositories
 {
-    public class OrderRepository : IRepository<Order>
+    public class AdminRepository : IRepository<Admin>
     {
         public void Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<Order> GetAll()
+        public List<Admin> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Order GetById(int id)
+        public Admin GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Insert(Order entity)
+        public void Insert(Admin entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Order entity)
+        public void Update(Admin entity)
         {
             throw new NotImplementedException();
         }
