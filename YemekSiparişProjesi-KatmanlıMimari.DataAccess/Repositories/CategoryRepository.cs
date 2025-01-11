@@ -4,35 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YemekSiparişProjesi_KatmanlıMimari.DataAccess.Abstractions;
+using YemekSiparişProjesi_KatmanlıMimari.DataAccess.Context;
 using YemekSiparişProjesi_KatmanlıMimari.Entites.Models;
 
 namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Repositories
 {
-    public class CategoryRepository : IRepository<Category>
+    public class CategoryRepository : GenericRepository<Category>
     {
-        public void Delete(int id)
+        public CategoryRepository(ApplicationDBContext context) : base(context)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Category> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Category GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Insert(Category entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Category entity)
-        {
-            throw new NotImplementedException();
         }
     }
+  
+    
+
 }
+

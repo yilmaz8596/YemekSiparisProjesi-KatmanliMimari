@@ -12,7 +12,6 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Context
         public DbSet<Cart> Carts { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Payment> Payments { get; set; }
-        public DbSet<Admin> Admins { get; set; }
 
         // Constructor for dependency injection
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options)

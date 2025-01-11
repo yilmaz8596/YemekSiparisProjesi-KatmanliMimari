@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace YemekSiparişProjesi_KatmanlıMimari.Business.Services
 {
-    internal class UserService
+    public class UserService
     {
+
     }
 }

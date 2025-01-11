@@ -9,12 +9,16 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Entites.Models
 {
     public class User : BaseEntity
     {
-        public string? UserName { get; set; }
+        public string UserName { get; set; }
         public string? UserSurname { get; set; }
         public string? FullName => $"{UserName} {UserSurname}";
         public string? Address { get; set; }
         public string? PhoneNumber { get; set; }
-        public string? Email { get; set; }
+        public string Email { get; set; }
+
+        public string Password { get; set; }
+
+        public bool IsAdmin { get; set; } = false;
         public ICollection<Order>? Orders { get; set; }
         public ICollection<Cart>? Carts { get; set; }
     }

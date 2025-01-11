@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using YemekSiparişProjesi_KatmanlıMimari.DataAccess.Abstractions;
 using YemekSiparişProjesi_KatmanlıMimari.DataAccess.Context;
 
 namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Repositories
 {
-    public class GenericRepository<T>: IRepository<T> where T : class
+    public class GenericRepository<T> : IRepository<T> where T : class
     {
         private readonly ApplicationDBContext _dbContext;
         private readonly DbSet<T> _dbSet;
@@ -19,27 +20,41 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Repositories
 
         public void Insert(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Add(entity);
+            _dbContext.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
-            throw new NotImplementedException();
+            var entity = GetById(id);
+            _dbSet.Remove(entity);
+            _dbContext.SaveChanges();
         }
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Update(entity);
+            _dbContext.SaveChanges();
         }
 
         public List<T> GetAll()
         {
-            throw new NotImplementedException();
+            return _dbSet.ToList();
         }
 
-        public T GetById(int id)
+        public T GetById(Guid id)
         {
-            throw new NotImplementedException();
+            var entity = _dbSet.Find(id);
+            if (entity == null)
+            {
+                throw new Exception("Entity not found");
+            }
+            return entity;
+        }
+
+        public bool IfEntityExists(Expression<Func<T, bool>> filter)
+        {
+            return _dbSet.Any(filter);
         }
     }
 }

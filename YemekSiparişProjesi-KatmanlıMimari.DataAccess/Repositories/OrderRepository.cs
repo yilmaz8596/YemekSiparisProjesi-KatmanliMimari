@@ -4,35 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YemekSiparişProjesi_KatmanlıMimari.DataAccess.Abstractions;
+using YemekSiparişProjesi_KatmanlıMimari.DataAccess.Context;
 using YemekSiparişProjesi_KatmanlıMimari.Entites.Models;
 
 namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Repositories
 {
-    public class OrderRepository : IRepository<Order>
+    public class OrderRepository : GenericRepository<Order>
     {
-        public void Delete(int id)
+        public OrderRepository(ApplicationDBContext context) : base(context)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Order> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Order GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Insert(Order entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Order entity)
-        {
-            throw new NotImplementedException();
         }
     }
 }
