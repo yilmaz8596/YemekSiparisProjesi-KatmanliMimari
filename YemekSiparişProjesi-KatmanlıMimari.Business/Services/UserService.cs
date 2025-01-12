@@ -11,6 +11,7 @@ using YemekSiparişProjesi_KatmanlıMimari.Business.Validators;
 using YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations;
 using YemekSiparişProjesi_KatmanlıMimari.DataAccess.Repositories;
 using YemekSiparişProjesi_KatmanlıMimari.Entites.Models;
+using BCrypt.Net;
 
 namespace YemekSiparişProjesi_KatmanlıMimari.Business.Services
 {
@@ -38,27 +39,33 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Business.Services
 
         public void Delete(Guid id)
         {
-            _userRepository.Delete(id);
-        }
-        public IEnumerable<User> GetAll()
-        {
-            return _userRepository.GetAll();
-        }
-
-        public User GetById(Guid id)
-        {
-            return _userRepository.GetById(id);
-        }
-
-        public bool IfentityExists(Expression<Func<User, bool>> filter)
-        {
-            return _userRepository.IfEntityExists(filter);
+            try
+            {
+                user.Password = HashPassword(user.Password);
+                _userRepository.Register(user);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in AddUser: {ex.Message}");
+                throw;
+            }
         }
 
-        public void Update(User user)
+        private string HashPassword(string password)
         {
-            _userRepository.Update(user);
+            return BCrypt.Net.BCrypt.HashPassword(password);
         }
+
+        public bool VerifyPassword(string password, string hashedPassword)
+        {
+            return BCrypt.Net.BCrypt.Verify(password, hashedPassword);
+        }
+
+        public User GetUserByEmail(string email)
+        {
+            return _userRepository.GetUserByEmail(email);
+        }
+
     }
 
 }
