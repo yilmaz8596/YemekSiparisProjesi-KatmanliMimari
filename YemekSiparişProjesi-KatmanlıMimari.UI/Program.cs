@@ -1,17 +1,48 @@
+using YemekSiparişProjesi_KatmanlıMimari.DataAccess.Context;
+
 namespace YemekSiparişProjesi_KatmanlıMimari.UI
 {
     internal static class Program
     {
         /// <summary>
-        ///  The main entry point for the application.
+        /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            // Initialize application configuration
             ApplicationConfiguration.Initialize();
-            Application.Run(new Register());
+
+            // Custom setup for dependencies and logging
+            try
+            {
+                // Perform application setup
+                InitializeApplication();
+
+                // Start the application
+                Application.Run(new Register());
+            }
+            catch (Exception ex)
+            {
+                // Log the exception and show an error message
+                Console.WriteLine($"Application error: {ex.Message}");
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private static void InitializeApplication()
+        {
+            // Example: Test the database connection
+            using (var dbContext = new ApplicationDBContext())
+            {
+                if (!dbContext.Database.CanConnect())
+                {
+                    throw new InvalidOperationException("Unable to connect to the database. Please check your connection string.");
+                }
+            }
+
+            // Any additional application-level initialization can go here
+            Console.WriteLine("Application initialized successfully.");
         }
     }
 }

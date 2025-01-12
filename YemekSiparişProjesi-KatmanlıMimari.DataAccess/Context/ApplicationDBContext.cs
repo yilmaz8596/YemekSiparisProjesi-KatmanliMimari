@@ -19,14 +19,17 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Context
         {
         }
 
+        public ApplicationDBContext()
+        {
+        }
+
         // Optional: Override OnConfiguring for connection string
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-OJQ7MOU\SQLEXPRESS;Initial Catalog=KatmanliMimari_YemekSiprais;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
-
-            }
+            
+                optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-OJQ7MOU\SQLEXPRESS;Initial Catalog=KatmanlıMimari_YemekSiprais;Integrated Security=True;
+Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
+            
         }
 
         // Optional: Configure model relationships

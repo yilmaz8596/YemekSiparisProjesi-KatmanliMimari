@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             button1 = new Button();
-            textBox1 = new TextBox();
+            Ad = new TextBox();
             label1 = new Label();
-            textBox2 = new TextBox();
+            Soyad = new TextBox();
             label2 = new Label();
-            textBox3 = new TextBox();
+            Eposta = new TextBox();
             label3 = new Label();
-            textBox4 = new TextBox();
+            Sifre = new TextBox();
             label4 = new Label();
             label5 = new Label();
-            textBox5 = new TextBox();
+            SifreTekrar = new TextBox();
             SuspendLayout();
             // 
             // button1
@@ -51,15 +51,15 @@
             button1.TabIndex = 0;
             button1.Text = "Kayıt Ol";
             button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            button1.Click += Button1_Click;
             // 
-            // textBox1
+            // Ad
             // 
-            textBox1.Location = new Point(292, 51);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(384, 27);
-            textBox1.TabIndex = 1;
-            textBox1.TextChanged += textBox1_TextChanged;
+            Ad.Location = new Point(292, 51);
+            Ad.Name = "Ad";
+            Ad.Size = new Size(384, 27);
+            Ad.TabIndex = 1;
+            Ad.TextChanged += TextBox1_TextChanged;
             // 
             // label1
             // 
@@ -71,13 +71,13 @@
             label1.TabIndex = 2;
             label1.Text = "Ad";
             // 
-            // textBox2
+            // Soyad
             // 
-            textBox2.Location = new Point(292, 131);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(384, 27);
-            textBox2.TabIndex = 3;
-            textBox2.TextChanged += textBox2_TextChanged;
+            Soyad.Location = new Point(292, 131);
+            Soyad.Name = "Soyad";
+            Soyad.Size = new Size(384, 27);
+            Soyad.TabIndex = 3;
+            Soyad.TextChanged += TextBox2_TextChanged;
             // 
             // label2
             // 
@@ -89,13 +89,13 @@
             label2.TabIndex = 4;
             label2.Text = "Soyad";
             // 
-            // textBox3
+            // Eposta
             // 
-            textBox3.Location = new Point(292, 209);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(384, 27);
-            textBox3.TabIndex = 5;
-            textBox3.TextChanged += textBox3_TextChanged;
+            Eposta.Location = new Point(292, 209);
+            Eposta.Name = "Eposta";
+            Eposta.Size = new Size(384, 27);
+            Eposta.TabIndex = 5;
+            Eposta.TextChanged += TextBox3_TextChanged;
             // 
             // label3
             // 
@@ -107,13 +107,13 @@
             label3.TabIndex = 6;
             label3.Text = "E-Posta";
             // 
-            // textBox4
+            // Sifre
             // 
-            textBox4.Location = new Point(292, 289);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(384, 27);
-            textBox4.TabIndex = 7;
-            textBox4.TextChanged += textBox4_TextChanged;
+            Sifre.Location = new Point(292, 289);
+            Sifre.Name = "Sifre";
+            Sifre.Size = new Size(384, 27);
+            Sifre.TabIndex = 7;
+            Sifre.TextChanged += TextBox4_TextChanged;
             // 
             // label4
             // 
@@ -135,13 +135,13 @@
             label5.TabIndex = 9;
             label5.Text = "Şifre Tekrar";
             // 
-            // textBox5
+            // SifreTekrar
             // 
-            textBox5.Location = new Point(292, 366);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(384, 27);
-            textBox5.TabIndex = 10;
-            textBox5.TextChanged += textBox5_TextChanged;
+            SifreTekrar.Location = new Point(292, 366);
+            SifreTekrar.Name = "SifreTekrar";
+            SifreTekrar.Size = new Size(384, 27);
+            SifreTekrar.TabIndex = 10;
+            SifreTekrar.TextChanged += TextBox5_TextChanged;
             // 
             // Register
             // 
@@ -149,16 +149,16 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.IndianRed;
             ClientSize = new Size(954, 472);
-            Controls.Add(textBox5);
+            Controls.Add(SifreTekrar);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(textBox4);
+            Controls.Add(Sifre);
             Controls.Add(label3);
-            Controls.Add(textBox3);
+            Controls.Add(Eposta);
             Controls.Add(label2);
-            Controls.Add(textBox2);
+            Controls.Add(Soyad);
             Controls.Add(label1);
-            Controls.Add(textBox1);
+            Controls.Add(Ad);
             Controls.Add(button1);
             Name = "Register";
             Text = "Form1";
@@ -170,15 +170,15 @@
         #endregion
 
         private Button button1;
-        private TextBox textBox1;
+        private TextBox Ad;
         private Label label1;
-        private TextBox textBox2;
+        private TextBox Soyad;
         private Label label2;
-        private TextBox textBox3;
+        private TextBox Eposta;
         private Label label3;
-        private TextBox textBox4;
+        private TextBox Sifre;
         private Label label4;
         private Label label5;
-        private TextBox textBox5;
+        private TextBox SifreTekrar;
     }
 }

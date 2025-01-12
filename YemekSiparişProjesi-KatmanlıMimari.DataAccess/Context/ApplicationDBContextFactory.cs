@@ -14,7 +14,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess
                   Initial Catalog=KatmanlıMimari_YemekSiprais;
                   Integrated Security=True;
                   Connect Timeout=30;
-                  Encrypt=True;
+                  Encrypt=False;
                   Trust Server Certificate=True;
                   Application Intent=ReadWrite;
                   Multi Subnet Failover=False"
