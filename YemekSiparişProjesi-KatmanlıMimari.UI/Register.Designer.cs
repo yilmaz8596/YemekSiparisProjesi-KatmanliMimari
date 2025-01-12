@@ -39,13 +39,15 @@
             label4 = new Label();
             label5 = new Label();
             SifreTekrar = new TextBox();
+            button2 = new Button();
+            label6 = new Label();
             SuspendLayout();
             // 
             // button1
             // 
             button1.BackColor = Color.Linen;
             button1.Font = new Font("Snap ITC", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(388, 413);
+            button1.Location = new Point(390, 430);
             button1.Name = "button1";
             button1.Size = new Size(175, 47);
             button1.TabIndex = 0;
@@ -73,7 +75,7 @@
             // 
             // Soyad
             // 
-            Soyad.Location = new Point(292, 131);
+            Soyad.Location = new Point(292, 119);
             Soyad.Name = "Soyad";
             Soyad.Size = new Size(384, 27);
             Soyad.TabIndex = 3;
@@ -83,7 +85,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Snap ITC", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(292, 105);
+            label2.Location = new Point(292, 93);
             label2.Name = "label2";
             label2.Size = new Size(67, 23);
             label2.TabIndex = 4;
@@ -91,7 +93,7 @@
             // 
             // Eposta
             // 
-            Eposta.Location = new Point(292, 209);
+            Eposta.Location = new Point(292, 189);
             Eposta.Name = "Eposta";
             Eposta.Size = new Size(384, 27);
             Eposta.TabIndex = 5;
@@ -101,7 +103,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Snap ITC", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(292, 183);
+            label3.Location = new Point(292, 163);
             label3.Name = "label3";
             label3.Size = new Size(85, 23);
             label3.TabIndex = 6;
@@ -109,7 +111,7 @@
             // 
             // Sifre
             // 
-            Sifre.Location = new Point(292, 289);
+            Sifre.Location = new Point(292, 260);
             Sifre.Name = "Sifre";
             Sifre.Size = new Size(384, 27);
             Sifre.TabIndex = 7;
@@ -119,7 +121,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Snap ITC", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(292, 263);
+            label4.Location = new Point(292, 234);
             label4.Name = "label4";
             label4.Size = new Size(63, 23);
             label4.TabIndex = 8;
@@ -129,7 +131,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Snap ITC", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(292, 340);
+            label5.Location = new Point(292, 307);
             label5.Name = "label5";
             label5.Size = new Size(136, 23);
             label5.TabIndex = 9;
@@ -137,18 +139,44 @@
             // 
             // SifreTekrar
             // 
-            SifreTekrar.Location = new Point(292, 366);
+            SifreTekrar.Location = new Point(292, 333);
             SifreTekrar.Name = "SifreTekrar";
             SifreTekrar.Size = new Size(384, 27);
             SifreTekrar.TabIndex = 10;
             SifreTekrar.TextChanged += TextBox5_TextChanged;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.IndianRed;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Snap ITC", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.Location = new Point(545, 372);
+            button2.Name = "button2";
+            button2.Size = new Size(133, 29);
+            button2.TabIndex = 11;
+            button2.Text = "Giriş Yapın";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Snap ITC", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Location = new Point(292, 375);
+            label6.Name = "label6";
+            label6.Size = new Size(247, 23);
+            label6.TabIndex = 12;
+            label6.Text = "Zaten hesabınız var mı?";
             // 
             // Register
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.IndianRed;
-            ClientSize = new Size(954, 472);
+            ClientSize = new Size(954, 544);
+            Controls.Add(label6);
+            Controls.Add(button2);
             Controls.Add(SifreTekrar);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -180,5 +208,7 @@
         private Label label4;
         private Label label5;
         private TextBox SifreTekrar;
+        private Button button2;
+        private Label label6;
     }
 }

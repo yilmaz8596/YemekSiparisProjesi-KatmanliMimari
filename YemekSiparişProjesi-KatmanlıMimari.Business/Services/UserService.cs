@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations;
 using YemekSiparişProjesi_KatmanlıMimari.DataAccess.Repositories;
 using YemekSiparişProjesi_KatmanlıMimari.Entites.Models;
+using BCrypt.Net;
 
 namespace YemekSiparişProjesi_KatmanlıMimari.Business.Services
 {
@@ -22,15 +23,39 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Business.Services
         {
             try
             {
+                user.Password = HashPassword(user.Password);
                 _userRepository.Register(user);
             }
             catch (Exception ex)
             {
-                // Log the exception
                 Console.WriteLine($"Error in AddUser: {ex.Message}");
-                throw; // Rethrow the exception to be handled in the UI layer
+                throw;
             }
         }
 
+        private string HashPassword(string password)
+        {
+            return BCrypt.Net.BCrypt.HashPassword(password);
+        }
+
+        public bool VerifyPassword(string password, string hashedPassword)
+        {
+            return BCrypt.Net.BCrypt.Verify(password, hashedPassword);
+        }
+
+        public User GetUserByEmail(string email)
+        {
+            return _userRepository.GetUserByEmail(email);
+        }
+
+        public User AuthenticateUser(string email, string password)
+        {
+            var user = _userRepository.GetUserByEmail(email);
+            if (user != null && VerifyPassword(password, user.Password))
+            {
+                return user;
+            }
+            return null;
+        }
     }
 }

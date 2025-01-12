@@ -28,6 +28,13 @@ namespace YemekSiparişProjesi_KatmanlıMimari.UI
         {
             try
             {
+                var userExists = _userService.GetUserByEmail(Eposta.Text);
+
+                if (userExists != null)
+                {
+                    MessageBox.Show("Bu e-posta adresi zaten kullanımda!");
+                    return;
+                }
                 var user = new User
                 {
                     UserName = Ad.Text,
@@ -47,7 +54,9 @@ namespace YemekSiparişProjesi_KatmanlıMimari.UI
 
                 _userService.AddUser(user);
                 MessageBox.Show("Kayıt Başarılı");
-                this.Close();
+                Login loginForm = new Login();
+                loginForm.Show();
+                this.Hide();
             }
             catch (DbUpdateException dbEx)
             {
@@ -87,6 +96,13 @@ namespace YemekSiparişProjesi_KatmanlıMimari.UI
         private void TextBox5_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Login login = new Login(); 
+            login.Show();
+            this.Hide();
         }
     }
 }
