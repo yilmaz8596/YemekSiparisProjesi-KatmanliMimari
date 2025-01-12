@@ -10,6 +10,9 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Business.Validators
 {
     public class CartValidator:AbstractValidator<Cart>
     {
-
+        public CartValidator()
+        {
+            
+        }
     }
 }

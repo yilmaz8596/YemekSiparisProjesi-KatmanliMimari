@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,13 +13,12 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Business.Validators
     {
         public OrderValidator()
         {
-            RuleFor(order => order.OrderDate)
-            .NotEmpty().WithMessage("Sipariş tarihi boş geçilemez.")
-            .LessThanOrEqualTo(DateTime.Now).WithMessage("Sipariş tarihi gelecekte olamaz.");
 
-            
-            RuleFor(order => order.TotalAmount)
-                .GreaterThan(0).WithMessage("Toplam tutar sıfırdan büyük olmalıdır.");
+        }
+
+        internal ValidationResult Validate(OrderDetail orderDetail)
+        {
+            throw new NotImplementedException();
         }
     }
 }

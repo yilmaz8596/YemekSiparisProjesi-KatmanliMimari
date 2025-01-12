@@ -18,7 +18,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Repositories
             _dbSet = _dbContext.Set<T>();
         }
 
-        public void Insert(T entity)
+        public void Add(T entity)
         {
             _dbSet.Add(entity);
             _dbContext.SaveChanges();

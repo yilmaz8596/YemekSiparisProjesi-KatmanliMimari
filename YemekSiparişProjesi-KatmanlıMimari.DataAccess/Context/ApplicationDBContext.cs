@@ -42,6 +42,10 @@ Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent
                 .HasForeignKey(o => o.UserID);
 
             base.OnModelCreating(modelBuilder);
+
+            //composite key
+            modelBuilder.Entity<OrderDetail>().HasKey(o => new { o.OrderID, o.DishID });
+            modelBuilder.Entity<OrderDetail>().Ignore(o => o.ID);
         }
     }
 }
