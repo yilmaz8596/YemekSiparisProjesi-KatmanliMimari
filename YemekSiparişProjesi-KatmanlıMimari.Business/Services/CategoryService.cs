@@ -15,6 +15,9 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Business.Services
         {
             _categoryRepository = categoryRepository;
         }
+
+        public object MessageBox { get; private set; }
+
         public void Add(Category category)
         {
             CategoryValidator validator = new();
@@ -33,7 +36,15 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Business.Services
 
         public IEnumerable<Category> GetAll()
         {
-            return _categoryRepository.GetAll();
+            try
+            {
+                return _categoryRepository.GetAll().ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in GetAll: {ex.Message}\n\nStack Trace: {ex.StackTrace}");
+                return new List<Category>(); 
+            }
         }
 
         public Category GetById(Guid id)
@@ -50,5 +61,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Business.Services
         {
             _categoryRepository.Update(category);
         }
+
+    
     }
 }

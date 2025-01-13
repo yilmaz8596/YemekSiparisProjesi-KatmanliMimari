@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YemekSiparişProjesi_KatmanlıMimari.DataAccess.Context;
 
@@ -11,9 +12,11 @@ using YemekSiparişProjesi_KatmanlıMimari.DataAccess.Context;
 namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250113102237_mig0")]
+    partial class mig0
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,36 +134,36 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("11111111-1111-1111-1111-111111111111"),
                             CategoryID = 1,
-                            CategoryImage = "Images/baslangıclar.jpg",
-                            CategoryName = "Başlangıçlar",
-                            CreateDate = new DateTime(2025, 1, 13, 14, 26, 28, 254, DateTimeKind.Local).AddTicks(1900),
+                            CategoryImage = "Images/appetizers.jpg",
+                            CategoryName = "Appetizers",
+                            CreateDate = new DateTime(2025, 1, 13, 13, 22, 37, 540, DateTimeKind.Local).AddTicks(8271),
                             IsActive = true
                         },
                         new
                         {
                             ID = new Guid("22222222-2222-2222-2222-222222222222"),
                             CategoryID = 2,
-                            CategoryImage = "Images/ana_yemekler.jpg",
-                            CategoryName = "Ana Yemekler",
-                            CreateDate = new DateTime(2025, 1, 13, 14, 26, 28, 255, DateTimeKind.Local).AddTicks(3724),
+                            CategoryImage = "Images/main_courses.jpg",
+                            CategoryName = "Main Courses",
+                            CreateDate = new DateTime(2025, 1, 13, 13, 22, 37, 541, DateTimeKind.Local).AddTicks(9162),
                             IsActive = true
                         },
                         new
                         {
                             ID = new Guid("33333333-3333-3333-3333-333333333333"),
                             CategoryID = 3,
-                            CategoryImage = "Images/tatlilar.jpg",
-                            CategoryName = "Tatlılar",
-                            CreateDate = new DateTime(2025, 1, 13, 14, 26, 28, 255, DateTimeKind.Local).AddTicks(3736),
+                            CategoryImage = "Images/desserts.jpg",
+                            CategoryName = "Desserts",
+                            CreateDate = new DateTime(2025, 1, 13, 13, 22, 37, 541, DateTimeKind.Local).AddTicks(9173),
                             IsActive = true
                         },
                         new
                         {
                             ID = new Guid("44444444-4444-4444-4444-444444444444"),
                             CategoryID = 4,
-                            CategoryImage = "Images/icecekler.jpg",
-                            CategoryName = "İçecekler",
-                            CreateDate = new DateTime(2025, 1, 13, 14, 26, 28, 255, DateTimeKind.Local).AddTicks(3739),
+                            CategoryImage = "Images/beverages.jpg",
+                            CategoryName = "Beverages",
+                            CreateDate = new DateTime(2025, 1, 13, 13, 22, 37, 541, DateTimeKind.Local).AddTicks(9175),
                             IsActive = true
                         });
                 });
@@ -215,7 +218,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("a1111111-1111-1111-1111-111111111111"),
                             CategoryID = 1,
-                            CreateDate = new DateTime(2025, 1, 13, 14, 26, 28, 255, DateTimeKind.Local).AddTicks(7704),
+                            CreateDate = new DateTime(2025, 1, 13, 13, 22, 37, 542, DateTimeKind.Local).AddTicks(2993),
                             Description = "Sarımsak, zeytinyağı, tuz ve domates ile süslenmiş kızarmış ekmek",
                             DishName = "Bruschetta",
                             ImageUrl = "Images/bruschetta.jpg",
@@ -226,7 +229,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("a2222222-2222-2222-2222-222222222222"),
                             CategoryID = 1,
-                            CreateDate = new DateTime(2025, 1, 13, 14, 26, 28, 255, DateTimeKind.Local).AddTicks(8370),
+                            CreateDate = new DateTime(2025, 1, 13, 13, 22, 37, 542, DateTimeKind.Local).AddTicks(3674),
                             Description = "Geleneksel Türk mercimek çorbası",
                             DishName = "Mercimek Çorbası",
                             ImageUrl = "Images/mercimek_corbasi.jpg",
@@ -237,7 +240,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("a3333333-3333-3333-3333-333333333333"),
                             CategoryID = 1,
-                            CreateDate = new DateTime(2025, 1, 13, 14, 26, 28, 255, DateTimeKind.Local).AddTicks(8383),
+                            CreateDate = new DateTime(2025, 1, 13, 13, 22, 37, 542, DateTimeKind.Local).AddTicks(3687),
                             Description = "Çıtır yufka içinde peynirli sigara böreği",
                             DishName = "Sigara Böreği",
                             ImageUrl = "Images/sigara_boregi.jpg",
@@ -248,7 +251,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("a4444444-4444-4444-4444-444444444444"),
                             CategoryID = 1,
-                            CreateDate = new DateTime(2025, 1, 13, 14, 26, 28, 255, DateTimeKind.Local).AddTicks(8387),
+                            CreateDate = new DateTime(2025, 1, 13, 13, 22, 37, 542, DateTimeKind.Local).AddTicks(3690),
                             Description = "Nohut püresi, tahin, limon suyu ve zeytinyağı ile hazırlanan meze",
                             DishName = "Humus",
                             ImageUrl = "Images/humus.jpg",
@@ -259,7 +262,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("b1111111-1111-1111-1111-111111111111"),
                             CategoryID = 2,
-                            CreateDate = new DateTime(2025, 1, 13, 14, 26, 28, 255, DateTimeKind.Local).AddTicks(8389),
+                            CreateDate = new DateTime(2025, 1, 13, 13, 22, 37, 542, DateTimeKind.Local).AddTicks(3693),
                             Description = "Baharatlarla harmanlanmış el yapımı ızgara köfte",
                             DishName = "Izgara Köfte",
                             ImageUrl = "Images/izgara_kofte.jpg",
@@ -270,7 +273,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("b2222222-2222-2222-2222-222222222222"),
                             CategoryID = 2,
-                            CreateDate = new DateTime(2025, 1, 13, 14, 26, 28, 255, DateTimeKind.Local).AddTicks(8401),
+                            CreateDate = new DateTime(2025, 1, 13, 13, 22, 37, 542, DateTimeKind.Local).AddTicks(3701),
                             Description = "Geleneksel Türk mantısı, yoğurt ve baharatlı domates sosu ile",
                             DishName = "Mantı",
                             ImageUrl = "Images/manti.jpg",
@@ -281,7 +284,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("b3333333-3333-3333-3333-333333333333"),
                             CategoryID = 2,
-                            CreateDate = new DateTime(2025, 1, 13, 14, 26, 28, 255, DateTimeKind.Local).AddTicks(8404),
+                            CreateDate = new DateTime(2025, 1, 13, 13, 22, 37, 542, DateTimeKind.Local).AddTicks(3704),
                             Description = "Marine edilmiş tavuk parçaları, ızgara sebzeler ile servis edilir",
                             DishName = "Tavuk Şiş",
                             ImageUrl = "Images/tavuk_sis.jpg",
@@ -292,7 +295,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("b4444444-4444-4444-4444-444444444444"),
                             CategoryID = 2,
-                            CreateDate = new DateTime(2025, 1, 13, 14, 26, 28, 255, DateTimeKind.Local).AddTicks(8406),
+                            CreateDate = new DateTime(2025, 1, 13, 13, 22, 37, 542, DateTimeKind.Local).AddTicks(3706),
                             Description = "Zeytinyağlı patlıcan yemeği, domates ve soğan ile",
                             DishName = "İmam Bayıldı",
                             ImageUrl = "Images/imam_bayildi.jpg",
@@ -303,7 +306,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("c1111111-1111-1111-1111-111111111111"),
                             CategoryID = 3,
-                            CreateDate = new DateTime(2025, 1, 13, 14, 26, 28, 255, DateTimeKind.Local).AddTicks(8408),
+                            CreateDate = new DateTime(2025, 1, 13, 13, 22, 37, 542, DateTimeKind.Local).AddTicks(3710),
                             Description = "Geleneksel Türk tatlısı, ince yufka katmanları arasında fındık, ceviz ile",
                             DishName = "Baklava",
                             ImageUrl = "Images/baklava.jpg",
@@ -314,7 +317,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("c2222222-2222-2222-2222-222222222222"),
                             CategoryID = 3,
-                            CreateDate = new DateTime(2025, 1, 13, 14, 26, 28, 255, DateTimeKind.Local).AddTicks(8411),
+                            CreateDate = new DateTime(2025, 1, 13, 13, 22, 37, 542, DateTimeKind.Local).AddTicks(3713),
                             Description = "Fırında pişirilmiş geleneksel Türk sütlü tatlısı",
                             DishName = "Sütlaç",
                             ImageUrl = "Images/sutlac.jpg",
@@ -325,7 +328,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("c3333333-3333-3333-3333-333333333333"),
                             CategoryID = 3,
-                            CreateDate = new DateTime(2025, 1, 13, 14, 26, 28, 255, DateTimeKind.Local).AddTicks(8413),
+                            CreateDate = new DateTime(2025, 1, 13, 13, 22, 37, 542, DateTimeKind.Local).AddTicks(3716),
                             Description = "Karamelize şekerle kaplı muhallebi tatlısı",
                             DishName = "Kazandibi",
                             ImageUrl = "Images/kazandibi.jpg",
@@ -336,7 +339,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("c4444444-4444-4444-4444-444444444444"),
                             CategoryID = 3,
-                            CreateDate = new DateTime(2025, 1, 13, 14, 26, 28, 255, DateTimeKind.Local).AddTicks(8414),
+                            CreateDate = new DateTime(2025, 1, 13, 13, 22, 37, 542, DateTimeKind.Local).AddTicks(3718),
                             Description = "Kadayıf ve peynir ile yapılan geleneksel Türk tatlısı",
                             DishName = "Künefe",
                             ImageUrl = "Images/kunefe.jpg",
@@ -347,7 +350,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("d1111111-1111-1111-1111-111111111111"),
                             CategoryID = 4,
-                            CreateDate = new DateTime(2025, 1, 13, 14, 26, 28, 255, DateTimeKind.Local).AddTicks(8416),
+                            CreateDate = new DateTime(2025, 1, 13, 13, 22, 37, 542, DateTimeKind.Local).AddTicks(3720),
                             Description = "Geleneksel Türk kahvesi, lokum ile servis edilir",
                             DishName = "Türk Kahvesi",
                             ImageUrl = "Images/turk_kahvesi.jpg",
@@ -358,7 +361,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("d2222222-2222-2222-2222-222222222222"),
                             CategoryID = 4,
-                            CreateDate = new DateTime(2025, 1, 13, 14, 26, 28, 255, DateTimeKind.Local).AddTicks(8420),
+                            CreateDate = new DateTime(2025, 1, 13, 13, 22, 37, 542, DateTimeKind.Local).AddTicks(3722),
                             Description = "Geleneksel Türk yoğurt içeceği",
                             DishName = "Ayran",
                             ImageUrl = "Images/ayran.jpg",
@@ -369,7 +372,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("d3333333-3333-3333-3333-333333333333"),
                             CategoryID = 4,
-                            CreateDate = new DateTime(2025, 1, 13, 14, 26, 28, 255, DateTimeKind.Local).AddTicks(8422),
+                            CreateDate = new DateTime(2025, 1, 13, 13, 22, 37, 542, DateTimeKind.Local).AddTicks(3724),
                             Description = "Geleneksel Türk turp içeceği",
                             DishName = "Şalgam Suyu",
                             ImageUrl = "Images/salgam_suyu.jpg",
@@ -380,7 +383,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("d4444444-4444-4444-4444-444444444444"),
                             CategoryID = 4,
-                            CreateDate = new DateTime(2025, 1, 13, 14, 26, 28, 255, DateTimeKind.Local).AddTicks(8453),
+                            CreateDate = new DateTime(2025, 1, 13, 13, 22, 37, 542, DateTimeKind.Local).AddTicks(3726),
                             Description = "Taze sıkılmış limonata",
                             DishName = "Taze Limonata",
                             ImageUrl = "Images/limonata.jpg",

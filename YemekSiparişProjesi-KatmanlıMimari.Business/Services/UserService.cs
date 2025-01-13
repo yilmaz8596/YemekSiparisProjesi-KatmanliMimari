@@ -1,14 +1,8 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using YemekSiparişProjesi_KatmanlıMimari.Business.Abstractions;
 using YemekSiparişProjesi_KatmanlıMimari.Business.Validators;
-using YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations;
 using YemekSiparişProjesi_KatmanlıMimari.DataAccess.Repositories;
 using YemekSiparişProjesi_KatmanlıMimari.Entites.Models;
 using BCrypt.Net;
@@ -39,16 +33,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Business.Services
 
         public void Delete(Guid id)
         {
-            try
-            {
-                user.Password = HashPassword(user.Password);
-                _userRepository.Register(user);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error in AddUser: {ex.Message}");
-                throw;
-            }
+         
         }
 
         private string HashPassword(string password)
@@ -66,6 +51,42 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Business.Services
             return _userRepository.GetUserByEmail(email);
         }
 
+        public User AuthenticateUser(string email, string password)
+        {
+            var user = GetUserByEmail(email);
+            if (user == null || !VerifyPassword(password, user.Password))
+            {
+                return null;
+            }
+            return user;
+        }
+
+        public void AddUser(User user)
+        {
+            user.Password = HashPassword(user.Password);
+            _userRepository.Add(user);
+        }
+
+
+        IEnumerable<User> IManager<User>.GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        User IManager<User>.GetById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        bool IManager<User>.IfentityExists(Expression<Func<User, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IManager<User>.Update(User entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

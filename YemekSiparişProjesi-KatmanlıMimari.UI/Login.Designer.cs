@@ -59,7 +59,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Snap ITC", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(208, 107);
+            label3.Location = new Point(208, 120);
             label3.Name = "label3";
             label3.Size = new Size(85, 23);
             label3.TabIndex = 17;

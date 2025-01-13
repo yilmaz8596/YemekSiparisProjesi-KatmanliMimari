@@ -18,7 +18,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Business.Services
         private readonly CartRepository _cartRepository;
         public CartService(CartRepository cartRepository)
         {
-            _cartRepository= cartRepository;
+            _cartRepository = cartRepository;
         }
         public void Add(Cart cart)
         {
@@ -54,8 +54,8 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Business.Services
         public void Update(Cart cart)
         {
             _cartRepository.Update(cart);
-        }
-    }
 
-    
+        }
+
+    }
 }
