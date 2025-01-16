@@ -20,7 +20,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-              Siparis siparis = new Siparis();
+              Kategori siparis = new Kategori();
             siparis.Show();
             this.Hide();
         }

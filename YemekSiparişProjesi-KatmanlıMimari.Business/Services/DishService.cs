@@ -50,6 +50,10 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Business.Services
         {
             _dishRepository.Update(dish);
         }
-
+       
+         public IEnumerable<Dish> GetDishesByCategoryId(int categoryID)
+        {
+            return _dishRepository.GetDishesByCategory(categoryID);
+        }
     }
 }

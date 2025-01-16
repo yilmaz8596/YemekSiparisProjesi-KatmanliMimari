@@ -86,7 +86,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Snap ITC", 24F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.WhiteSmoke;
-            label1.Location = new Point(55, 137);
+            label1.Location = new Point(55, 131);
             label1.Name = "label1";
             label1.Size = new Size(292, 51);
             label1.TabIndex = 2;

@@ -103,10 +103,10 @@ Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent
         new Dish
         {
             ID = new Guid("A2222222-2222-2222-2222-222222222222"),
-            DishName = "Mercimek Çorbası",
-            Description = "Geleneksel Türk mercimek çorbası",
+            DishName = "Kombo Tabağı",
+            Description = "Çıtır soğan halkaları, parmak tavuk, patates kızartması ve soslar ile",
             UnitPrice = 20.99m,
-            ImageUrl = "Images/mercimek_corbasi.jpg",
+            ImageUrl = "Images/kombo_tabagi.jpg",
             CategoryID = 1
         },
         new Dish
@@ -127,6 +127,46 @@ Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent
             ImageUrl = "Images/humus.jpg",
             CategoryID = 1
         },
+
+        // Soups
+        // Soups
+new Dish
+{
+    ID = new Guid("A5555555-5555-5555-5555-555555555555"),
+    DishName = "Mercimek Çorbası",
+    Description = "Geleneksel Türk mutfağının vazgeçilmezi, baharatlı kırmızı mercimek çorbası",
+    UnitPrice = 24.99m,
+    ImageUrl = "Images/mercimek_corbasi.jpg",
+    CategoryID = 1
+},
+new Dish
+{
+    ID = new Guid("A6666666-6666-6666-6666-666666666666"),
+    DishName = "Ezogelin Çorbası",
+    Description = "Mercimek, pirinç ve bulgur ile hazırlanan geleneksel çorba",
+    UnitPrice = 26.99m,
+    ImageUrl = "Images/ezogelin_corbasi.jpg",
+    CategoryID = 1
+},
+new Dish
+{
+    ID = new Guid("A7777777-7777-7777-7777-777777777777"),
+    DishName = "İşkembe Çorbası",
+    Description = "Sarımsaklı ve sirkeli geleneksel Türk çorbası",
+    UnitPrice = 28.99m,
+    ImageUrl = "Images/iskembe_corbasi.jpg",
+    CategoryID = 1
+},
+new Dish
+{
+    ID = new Guid("A8888888-8888-8888-8888-888888888888"),
+    DishName = "Yayla Çorbası",
+    Description = "Yoğurt ve pirinç ile hazırlanan nefis bir çorba",
+    UnitPrice = 25.99m,
+    ImageUrl = "Images/yayla_corbasi.jpg",
+    CategoryID = 1
+},
+
 
         // Main Courses
         new Dish

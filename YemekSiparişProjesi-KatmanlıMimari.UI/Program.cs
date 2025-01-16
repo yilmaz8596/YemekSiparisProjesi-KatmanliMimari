@@ -18,9 +18,12 @@ namespace YemekSiparişProjesi_KatmanlıMimari.UI
             {
                 // Perform application setup
                 InitializeApplication();
+                Application.EnableVisualStyles();
+
 
                 // Start the application
-                Application.Run(new Register());
+                //Application.Run(new Register());
+                Application.Run(new Main1());
             }
             catch (Exception ex)
             {
