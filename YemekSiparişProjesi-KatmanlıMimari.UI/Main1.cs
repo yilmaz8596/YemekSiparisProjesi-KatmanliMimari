@@ -1,5 +1,6 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
+using Microsoft.EntityFrameworkCore;
 using YemekSiparişProjesi_KatmanlıMimari.Business.Services;
 using YemekSiparişProjesi_KatmanlıMimari.Business.Validators;
 using YemekSiparişProjesi_KatmanlıMimari.DataAccess.Context;
@@ -14,7 +15,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.UI
         private readonly UserService _userService;
         private readonly OrderDetailService _orderDetailService;
         private readonly OrderService _orderService;
-        private readonly ApplicationDBContext _dbContext;  
+        private readonly ApplicationDBContext _dbContext;
         private User _currentUser;
 
         public Main1()
@@ -26,9 +27,12 @@ namespace YemekSiparişProjesi_KatmanlıMimari.UI
             var userRepo = new UserRepository(_dbContext);
             var orderDetailRepo = new OrderDetailRepository(_dbContext);
             var orderRepo = new OrderRepository(_dbContext);
-            // Initialize services
+            var dishRepo = new DishRepository(_dbContext); // Dish repository'i ekle
+
+            // Service'leri başlat
             _userService = new UserService(userRepo);
-            _orderDetailService = new OrderDetailService(orderDetailRepo);
+            _orderDetailService = new OrderDetailService(orderDetailRepo, dishRepo, orderRepo); // Tüm gerekli repository'leri geç
+            _orderService = new OrderService(orderRepo);
 
             // Initialize MaterialSkinManager
             materialSkinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.DARK;
@@ -118,7 +122,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.UI
         {
             try
             {
-                // Create user from text boxes
+                // Önce user'ı oluştur ve database'e ekle
                 var user = new User
                 {
                     ID = Guid.NewGuid(),
@@ -129,7 +133,6 @@ namespace YemekSiparişProjesi_KatmanlıMimari.UI
                     Email = materialTextBox25.Text
                 };
 
-                // Validate user using FluentValidation
                 var userValidator = new UserValidator();
                 var userValidationResult = userValidator.Validate(user);
 
@@ -140,48 +143,40 @@ namespace YemekSiparişProjesi_KatmanlıMimari.UI
                     return;
                 }
 
-                // If validation passes, assign the user and place order
+                // User'ı database'e ekle
+                _userService.Add(user);
                 _currentUser = user;
 
+                // Order'ı oluştur ve database'e ekle
                 var order = new Order
                 {
                     ID = Guid.NewGuid(),
                     OrderDate = DateTime.Now,
                     UserID = _currentUser.ID,
                     TotalAmount = cart.Sum(item => item.Dish.UnitPrice * item.Quantity)
-
                 };
 
+                // Önce order'ı kaydet
+                _orderService.Add(order);
+                _dbContext.SaveChanges(); // Değişiklikleri kaydet
 
-                // Create order details for each cart item
+                // Sonra order details'leri ekle
                 foreach (var cartItem in cart)
                 {
-                    // Ensure the Dish has an ID
-                    if (cartItem.Dish.ID == Guid.Empty)
-                    {
-                        // If Dish ID is not set, you might need to fetch or create it
-                        var existingDish = _dbContext.Dishes.FirstOrDefault(d => d.DishName == cartItem.Dish.DishName);
-                        if (existingDish == null)
-                        {
-                            // Create a new dish if it doesn't exist
-                            existingDish = new Dish
-                            {
-                                ID = Guid.NewGuid(),
-                                DishName = cartItem.Dish.DishName,
-                                UnitPrice = cartItem.Dish.UnitPrice
-                            };
-                            //_dbContext.Dishes.Add(existingDish);
-                        }
+                    // Veritabanından dish'i bul
+                    var existingDish = _dbContext.Dishes.FirstOrDefault(d => d.DishName == cartItem.Dish.DishName);
 
-                        cartItem.Dish = existingDish;
+                    if (existingDish == null)
+                    {
+                        throw new Exception($"Yemek bulunamadı: {cartItem.Dish.DishName}");
                     }
 
                     var orderDetail = new OrderDetail
                     {
                         OrderID = order.ID,
-                        DishID = cartItem.Dish.ID,
+                        DishID = existingDish.ID, // Veritabanından gelen dish ID'sini kullan
                         Quantity = cartItem.Quantity,
-                        UnitPrice = cartItem.Dish.UnitPrice
+                        UnitPrice = existingDish.UnitPrice
                     };
 
                     var orderDetailValidator = new OrderDetailValidator();
@@ -195,13 +190,12 @@ namespace YemekSiparişProjesi_KatmanlıMimari.UI
                     }
 
                     _orderDetailService.Add(orderDetail);
-                    _orderService.Add(order);
                 }
 
-                // Save changes to the database
+                // Son değişiklikleri kaydet
                 _dbContext.SaveChanges();
 
-                // Clear the cart after order is placed
+                // Sepeti temizle
                 cart.Clear();
                 materialListView1.Items.Clear();
 
@@ -214,16 +208,45 @@ namespace YemekSiparişProjesi_KatmanlıMimari.UI
             }
         }
 
+        public void GetOrdersByUserId(Guid userId)
+        {
+            var orders = _orderService.GetById(userId);
+            materialListView2.Items.Clear();
+
+
+        }
+
 
         private void UpdateCartView(string dishName, string dishPrice, string quantity)
         {
-            // Check if item exists in cart
-            var existingItem = cart.FirstOrDefault(x => x.Dish.DishName == dishName);
-
-            if (existingItem != null)
+            try
             {
-                existingItem.Quantity++;
+                // Veritabanından dish'i bul
+                var existingDish = _dbContext.Dishes.FirstOrDefault(d => d.DishName == dishName);
+                if (existingDish == null)
+                {
+                    MessageBox.Show($"Yemek bulunamadı: {dishName}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
+                // Check if item exists in cart
+                var existingItem = cart.FirstOrDefault(x => x.Dish.DishName == dishName);
+
+                if (existingItem != null)
+                {
+                    existingItem.Quantity++;
+                }
+                else
+                {
+                    var cartItem = new CartItem
+                    {
+                        Dish = existingDish, // Veritabanından gelen dish'i kullan
+                        Quantity = int.Parse(quantity)
+                    };
+                    cart.Add(cartItem);
+                }
+
+                // ListView'i güncelle
                 materialListView1.Items.Clear();
                 foreach (var item in cart)
                 {
@@ -235,32 +258,15 @@ namespace YemekSiparişProjesi_KatmanlıMimari.UI
                 (item.Dish.UnitPrice * item.Quantity).ToString()
                     }));
                 }
+
+                MessageBox.Show($"Ürün sepete eklendi: {dishName}");
             }
-            else
+            catch (Exception ex)
             {
-                var cartItem = new CartItem
-                {
-                    Dish = new Dish
-                    {
-                        DishName = dishName,
-                        UnitPrice = decimal.Parse(dishPrice)
-                    },
-                    Quantity = int.Parse(quantity)
-                };
-                cart.Add(cartItem);
-
-                materialListView1.Items.Add(new ListViewItem(new string[]
-                {
-            dishName,
-            dishPrice,
-            quantity,
-            (decimal.Parse(dishPrice) * int.Parse(quantity)).ToString()
-                }));
+                MessageBox.Show($"Ürün eklenirken bir hata oluştu: {ex.Message}", "Hata",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            MessageBox.Show($"Ürün sepete eklendi: {dishName}");
         }
-
         private void tabPage1_Click(object sender, EventArgs e)
         {
 
@@ -707,6 +713,62 @@ namespace YemekSiparişProjesi_KatmanlıMimari.UI
             }
 
             ValidateAndPlaceOrder();
+        }
+
+        private void materialButton23_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // First, find the user by email
+                var existingUser = _userService.GetUserByEmail(materialTextBox24.Text);
+                if (existingUser == null)
+                {
+                    MessageBox.Show("Kullanıcı bulunamadı!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var userOrders = _dbContext.Orders
+                    .Include(o => o.OrderDetails)  
+                    .ThenInclude(od => od.Dish)    
+                    .Where(o => o.UserID == existingUser.ID)
+                    .ToList();
+
+                if (!userOrders.Any())
+                {
+                    MessageBox.Show("Bu kullanıcıya ait sipariş bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                materialListView2.Items.Clear();
+
+                foreach (var order in userOrders)
+                {
+                    foreach (var orderDetail in order.OrderDetails)
+                    {
+                        var item = new ListViewItem(new string[]
+                        {
+                    order.OrderDate.ToString("dd/MM/yyyy HH:mm"),
+                    orderDetail.Dish?.DishName ?? "Bilinmeyen Ürün",
+                    orderDetail.Quantity.ToString(),
+                    orderDetail.UnitPrice.ToString("C2"),
+                    (orderDetail.UnitPrice * orderDetail.Quantity).ToString("C2")
+                        });
+
+                        materialListView2.Items.Add(item);
+                    }
+                }
+
+                MessageBox.Show("Siparişler başarıyla getirildi!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Siparişler getirilirken bir hata oluştu: {ex.Message}", "Hata",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void materialTextBox24_Click(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -14,12 +14,28 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Repositories
     {
         private readonly ApplicationDBContext _dbContext;
         private readonly DbSet<OrderDetail> _dbSet;
+
         public OrderDetailRepository(ApplicationDBContext context) : base(context)
         {
             _dbContext = context;
-            _dbSet=_dbContext.Set<OrderDetail>();
+            _dbSet = _dbContext.Set<OrderDetail>();
         }
 
+        public new void Add(OrderDetail orderDetail)
+        {
+            // Check if the combination already exists
+            var existing = _dbSet.FirstOrDefault(x =>
+                x.OrderID == orderDetail.OrderID &&
+                x.DishID == orderDetail.DishID);
+
+            if (existing != null)
+            {
+                throw new InvalidOperationException("Bu sipariş detayı zaten mevcut.");
+            }
+
+            _dbSet.Add(orderDetail);
+            _dbContext.SaveChanges();
+        }
 
         public void DeleteOrderDetail(Guid OrderID, Guid DishID)
         {

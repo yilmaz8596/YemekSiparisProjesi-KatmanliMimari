@@ -32,6 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main1));
             ımageList1 = new ImageList(components);
             siparisGecmisi = new TabPage();
+            materialButton23 = new MaterialSkin.Controls.MaterialButton();
+            label30 = new Label();
+            materialTextBox24 = new MaterialSkin.Controls.MaterialTextBox2();
             label29 = new Label();
             materialListView2 = new MaterialSkin.Controls.MaterialListView();
             sepetim = new TabPage();
@@ -214,6 +217,9 @@
             // siparisGecmisi
             // 
             siparisGecmisi.BackColor = Color.FromArgb(50, 50, 50);
+            siparisGecmisi.Controls.Add(materialButton23);
+            siparisGecmisi.Controls.Add(label30);
+            siparisGecmisi.Controls.Add(materialTextBox24);
             siparisGecmisi.Controls.Add(label29);
             siparisGecmisi.Controls.Add(materialListView2);
             siparisGecmisi.ImageKey = "icons8-history-96.png";
@@ -223,12 +229,71 @@
             siparisGecmisi.TabIndex = 4;
             siparisGecmisi.Text = "Sipariş Geçmişi";
             // 
+            // materialButton23
+            // 
+            materialButton23.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            materialButton23.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            materialButton23.Depth = 0;
+            materialButton23.HighEmphasis = true;
+            materialButton23.Icon = null;
+            materialButton23.Location = new Point(1161, 330);
+            materialButton23.Margin = new Padding(4, 6, 4, 6);
+            materialButton23.MouseState = MaterialSkin.MouseState.HOVER;
+            materialButton23.Name = "materialButton23";
+            materialButton23.NoAccentTextColor = Color.Empty;
+            materialButton23.Size = new Size(79, 36);
+            materialButton23.TabIndex = 4;
+            materialButton23.Text = "Gönder";
+            materialButton23.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            materialButton23.UseAccentColor = false;
+            materialButton23.UseVisualStyleBackColor = true;
+            materialButton23.Click += materialButton23_Click;
+            // 
+            // label30
+            // 
+            label30.AutoSize = true;
+            label30.ForeColor = Color.WhiteSmoke;
+            label30.Location = new Point(1161, 274);
+            label30.Name = "label30";
+            label30.Size = new Size(257, 17);
+            label30.TabIndex = 3;
+            label30.Text = "Lütfen e-posta adresinizi girin";
+            // 
+            // materialTextBox24
+            // 
+            materialTextBox24.AnimateReadOnly = false;
+            materialTextBox24.BackgroundImageLayout = ImageLayout.None;
+            materialTextBox24.CharacterCasing = CharacterCasing.Normal;
+            materialTextBox24.Depth = 0;
+            materialTextBox24.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialTextBox24.HideSelection = true;
+            materialTextBox24.LeadingIcon = null;
+            materialTextBox24.Location = new Point(1161, 213);
+            materialTextBox24.MaxLength = 32767;
+            materialTextBox24.MouseState = MaterialSkin.MouseState.OUT;
+            materialTextBox24.Name = "materialTextBox24";
+            materialTextBox24.PasswordChar = '\0';
+            materialTextBox24.PrefixSuffixText = null;
+            materialTextBox24.ReadOnly = false;
+            materialTextBox24.RightToLeft = RightToLeft.No;
+            materialTextBox24.SelectedText = "";
+            materialTextBox24.SelectionLength = 0;
+            materialTextBox24.SelectionStart = 0;
+            materialTextBox24.ShortcutsEnabled = true;
+            materialTextBox24.Size = new Size(312, 48);
+            materialTextBox24.TabIndex = 2;
+            materialTextBox24.TabStop = false;
+            materialTextBox24.TextAlign = HorizontalAlignment.Left;
+            materialTextBox24.TrailingIcon = null;
+            materialTextBox24.UseSystemPasswordChar = false;
+            materialTextBox24.Click += materialTextBox24_Click;
+            // 
             // label29
             // 
             label29.AutoSize = true;
             label29.Font = new Font("MS UI Gothic", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 162);
             label29.ForeColor = Color.GreenYellow;
-            label29.Location = new Point(716, 37);
+            label29.Location = new Point(363, 48);
             label29.Name = "label29";
             label29.Size = new Size(137, 30);
             label29.TabIndex = 1;
@@ -241,13 +306,13 @@
             materialListView2.BorderStyle = BorderStyle.None;
             materialListView2.Depth = 0;
             materialListView2.FullRowSelect = true;
-            materialListView2.Location = new Point(249, 86);
+            materialListView2.Location = new Point(21, 92);
             materialListView2.MinimumSize = new Size(200, 100);
             materialListView2.MouseLocation = new Point(-1, -1);
             materialListView2.MouseState = MaterialSkin.MouseState.OUT;
             materialListView2.Name = "materialListView2";
             materialListView2.OwnerDraw = true;
-            materialListView2.Size = new Size(1047, 408);
+            materialListView2.Size = new Size(817, 408);
             materialListView2.TabIndex = 0;
             materialListView2.UseCompatibleStateImageBehavior = false;
             materialListView2.View = View.Details;
@@ -2097,5 +2162,8 @@
         private TabPage istatistikler;
         private Label label29;
         private MaterialSkin.Controls.MaterialListView materialListView2;
+        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox24;
+        private Label label30;
+        private MaterialSkin.Controls.MaterialButton materialButton23;
     }
 }
