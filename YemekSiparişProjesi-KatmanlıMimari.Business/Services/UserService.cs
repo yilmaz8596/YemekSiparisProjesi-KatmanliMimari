@@ -36,38 +36,14 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Business.Services
          
         }
 
-        private string HashPassword(string password)
-        {
-            return BCrypt.Net.BCrypt.HashPassword(password);
-        }
-
-        public bool VerifyPassword(string password, string hashedPassword)
-        {
-            return BCrypt.Net.BCrypt.Verify(password, hashedPassword);
-        }
+       
 
         public User GetUserByEmail(string email)
         {
             return _userRepository.GetUserByEmail(email);
         }
 
-        public User AuthenticateUser(string email, string password)
-        {
-            var user = GetUserByEmail(email);
-            if (user == null || !VerifyPassword(password, user.Password))
-            {
-                return null;
-            }
-            return user;
-        }
-
-        public void AddUser(User user)
-        {
-            user.Password = HashPassword(user.Password);
-            _userRepository.Add(user);
-        }
-
-
+       
         IEnumerable<User> IManager<User>.GetAll()
         {
             throw new NotImplementedException();

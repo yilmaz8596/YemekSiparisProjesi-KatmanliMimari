@@ -18,12 +18,12 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Business.Services
 
         public void Add(Order order)
         {
-            OrderValidator validator = new();
-            ValidationResult result = validator.Validate(order);
-            if (!result.IsValid)
-            {
-                throw new ValidationException(result.Errors);
-            }
+            //OrderValidator validator = new();
+            //ValidationResult result = validator.Validate(order);
+            //if (!result.IsValid)
+            //{
+            //    throw new ValidationException(result.Errors);
+            //}
             _orderRepository.Add(order);
         }
 

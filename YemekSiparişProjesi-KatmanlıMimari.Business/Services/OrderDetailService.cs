@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,12 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Business.Services
     public class OrderDetailService
     {
         private readonly OrderDetailRepository _orderDetailRepository;
+        private readonly OrderDetailValidator _validator;
+
         public OrderDetailService(OrderDetailRepository orderDetailRepository)
         {
             _orderDetailRepository = orderDetailRepository;
+            _validator = new OrderDetailValidator();
         }
         public IEnumerable<OrderDetail> GetAll()
         {
@@ -29,13 +33,41 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Business.Services
         }
         public void Add(OrderDetail orderDetail)
         {
-            OrderValidator validator = new();
-            ValidationResult result = validator.Validate(orderDetail);
-            if (!result.IsValid)
+            try
             {
-                throw new ValidationException(result.Errors);
+                // Ensure required fields are set
+                if (orderDetail.OrderID == Guid.Empty)
+                {
+                    throw new ArgumentException("OrderID must be set");
+                }
+                if (orderDetail.DishID == Guid.Empty)
+                {
+                    throw new ArgumentException("DishID must be set");
+                }
+
+                // Use the repository to add the order detail to the database
+                _orderDetailRepository.Add(orderDetail);
             }
-            _orderDetailRepository.Add(orderDetail);
+            catch (DbUpdateException dbEx)
+            {
+                // Provide more detailed error message
+                string errorMessage = $"Error adding order detail: {dbEx.Message}";
+                if (dbEx.InnerException != null)
+                {
+                    errorMessage += $"\nInner Exception: {dbEx.InnerException.Message}";
+                }
+                throw new Exception(errorMessage, dbEx);
+            }
+            catch (Exception ex)
+            {
+                // Handle other exceptions
+                string errorMessage = $"Error adding order detail: {ex.Message}";
+                if (ex.InnerException != null)
+                {
+                    errorMessage += $"\nInner Exception: {ex.InnerException.Message}";
+                }
+                throw new Exception(errorMessage, ex);
+            }
         }
         public void Update(OrderDetail orderDetail)
         {

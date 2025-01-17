@@ -20,6 +20,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Repositories
             _dbSet=_dbContext.Set<OrderDetail>();
         }
 
+
         public void DeleteOrderDetail(Guid OrderID, Guid DishID)
         {
             var orderDetail = _dbSet.FirstOrDefault(x => x.OrderID == OrderID && x.DishID == DishID);

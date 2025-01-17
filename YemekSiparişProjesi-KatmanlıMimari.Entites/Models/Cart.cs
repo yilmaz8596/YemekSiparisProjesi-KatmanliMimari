@@ -14,6 +14,8 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Entites.Models
     {
         public Guid CartID { get; set; }
         public Cart? Cart { get; set; }
+        public Guid OrderID { get; set; }
+        public Order? Order { get; set; }
         public Guid DishID { get; set; }
         public Dish? Dish { get; set; }
         public int Quantity { get; set; }

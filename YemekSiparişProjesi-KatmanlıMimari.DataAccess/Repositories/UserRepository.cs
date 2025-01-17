@@ -23,10 +23,6 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Repositories
             return _dbSet.FirstOrDefault(u => u.Email == email);
         }
 
-        public User GetUserByEmailAndPassword(string email, string password)
-        {
-            return _dbSet.FirstOrDefault(u => u.Email == email && u.Password == password);
-        }
 
         public void AddUser(User user)
         {

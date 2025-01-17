@@ -29,6 +29,8 @@ namespace YemekSiparişProjesi_KatmanlıMimari.Business.Services
                 throw new ValidationException(result.Errors);
             }
 
+            _cartRepository.Add(cart);
+
         }
 
         public void Delete(Guid id)

@@ -41,13 +41,70 @@ Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent
         // Optional: Configure model relationships
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Fluent API configurations
+    
+
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<User>()
+                .Property(u => u.UserName).IsRequired();
+
+            modelBuilder.Entity<User>()
+                .Property(u => u.Email).IsRequired();
+
+            // Order Configuration
             modelBuilder.Entity<Order>()
                 .HasOne(o => o.User)
                 .WithMany(u => u.Orders)
-                .HasForeignKey(o => o.UserID);
+                .HasForeignKey(o => o.UserID)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            base.OnModelCreating(modelBuilder);
+            // OrderDetail Configuration
+            modelBuilder.Entity<OrderDetail>()
+                .HasOne(od => od.Order)
+                .WithMany(o => o.OrderDetails)
+                .HasForeignKey(od => od.OrderID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<OrderDetail>()
+                .HasOne(od => od.Dish)
+                .WithMany(d => d.OrderDetails)
+                .HasForeignKey(od => od.DishID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+             //Dish Configuration
+            modelBuilder.Entity<Dish>()
+                .HasOne<Category>()
+                .WithMany(c => c.Dishes)
+                .HasForeignKey(d => d.CategoryID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Cart Configuration
+            modelBuilder.Entity<Cart>()
+                .HasOne(c => c.User)
+                .WithMany(u => u.Carts)
+                .HasForeignKey(c => c.UserID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // CartItem Configuration
+            modelBuilder.Entity<CartItem>()
+                .HasOne(ci => ci.Cart)
+                .WithMany(c => c.CartItems)
+                .HasForeignKey(ci => ci.CartID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<CartItem>()
+                .HasOne(ci => ci.Dish)
+                .WithMany()
+                .HasForeignKey(ci => ci.DishID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Payment Configuration
+            modelBuilder.Entity<Payment>()
+                .HasOne(p => p.Order)
+                .WithMany(o => o.Payments)
+                .HasForeignKey(p => p.OrderID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
 
             //composite key
             modelBuilder.Entity<OrderDetail>().HasKey(o => new { o.OrderID, o.DishID });
@@ -61,26 +118,26 @@ Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent
             var categories = new List<Category>
     {
         new Category {
-            ID = new Guid("11111111-1111-1111-1111-111111111111"),
-            CategoryID = 1,
+            ID = 1,
+            CategoryID = Guid.NewGuid(),
             CategoryName = "Başlangıçlar",
             CategoryImage = "Images/baslangıclar.jpg"
         },
         new Category {
-            ID = new Guid("22222222-2222-2222-2222-222222222222"),
-            CategoryID = 2,
+            ID = 2,
+            CategoryID = Guid.NewGuid(),
             CategoryName = "Ana Yemekler",
             CategoryImage = "Images/ana_yemekler.jpg"
         },
         new Category {
-            ID = new Guid("33333333-3333-3333-3333-333333333333"),
-            CategoryID = 3,
+            ID = 3,
+            CategoryID = Guid.NewGuid(),
             CategoryName = "Tatlılar",
             CategoryImage = "Images/tatlilar.jpg"
         },
         new Category {
-            ID = new Guid("44444444-4444-4444-4444-444444444444"),
-            CategoryID = 4,
+            ID = 4,
+            CategoryID = Guid.NewGuid(),
             CategoryName = "İçecekler",
             CategoryImage = "Images/icecekler.jpg"
         }
@@ -151,10 +208,10 @@ new Dish
 new Dish
 {
     ID = new Guid("A7777777-7777-7777-7777-777777777777"),
-    DishName = "İşkembe Çorbası",
-    Description = "Sarımsaklı ve sirkeli geleneksel Türk çorbası",
+    DishName = "Tavuk Çorbası",
+    Description = "Terbiye edilmiş köy tavuğu çorbası",
     UnitPrice = 28.99m,
-    ImageUrl = "Images/iskembe_corbasi.jpg",
+    ImageUrl = "Images/tavuk_corbasi.jpg",
     CategoryID = 1
 },
 new Dish

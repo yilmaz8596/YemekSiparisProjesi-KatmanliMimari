@@ -77,6 +77,9 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                     b.Property<Guid?>("ModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("OrderID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
@@ -89,17 +92,21 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
 
                     b.HasIndex("DishID");
 
+                    b.HasIndex("OrderID");
+
                     b.ToTable("CartItems");
                 });
 
             modelBuilder.Entity("YemekSiparişProjesi_KatmanlıMimari.Entites.Models.Category", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("CategoryID")
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<Guid>("CategoryID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CategoryImage")
                         .HasColumnType("nvarchar(max)");
@@ -129,38 +136,38 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            ID = new Guid("11111111-1111-1111-1111-111111111111"),
-                            CategoryID = 1,
+                            ID = 1,
+                            CategoryID = new Guid("437861a3-6546-436f-8e7c-15edac91a1d4"),
                             CategoryImage = "Images/baslangıclar.jpg",
                             CategoryName = "Başlangıçlar",
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 187, DateTimeKind.Local).AddTicks(8457),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 714, DateTimeKind.Local).AddTicks(4869),
                             IsActive = true
                         },
                         new
                         {
-                            ID = new Guid("22222222-2222-2222-2222-222222222222"),
-                            CategoryID = 2,
+                            ID = 2,
+                            CategoryID = new Guid("f1ae1e69-2870-4034-bccd-6bf45732d7d8"),
                             CategoryImage = "Images/ana_yemekler.jpg",
                             CategoryName = "Ana Yemekler",
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(2921),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 715, DateTimeKind.Local).AddTicks(6946),
                             IsActive = true
                         },
                         new
                         {
-                            ID = new Guid("33333333-3333-3333-3333-333333333333"),
-                            CategoryID = 3,
+                            ID = 3,
+                            CategoryID = new Guid("0b826fdd-371e-4741-b6d5-c269da6c2edb"),
                             CategoryImage = "Images/tatlilar.jpg",
                             CategoryName = "Tatlılar",
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(2932),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 715, DateTimeKind.Local).AddTicks(6968),
                             IsActive = true
                         },
                         new
                         {
-                            ID = new Guid("44444444-4444-4444-4444-444444444444"),
-                            CategoryID = 4,
+                            ID = 4,
+                            CategoryID = new Guid("414c7a9f-12bd-4a81-9600-0745d1590d26"),
                             CategoryImage = "Images/icecekler.jpg",
                             CategoryName = "İçecekler",
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(2935),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 715, DateTimeKind.Local).AddTicks(6970),
                             IsActive = true
                         });
                 });
@@ -173,9 +180,6 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
 
                     b.Property<int>("CategoryID")
                         .HasColumnType("int");
-
-                    b.Property<Guid?>("CategoryID1")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -206,7 +210,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("CategoryID1");
+                    b.HasIndex("CategoryID");
 
                     b.ToTable("Dishes");
 
@@ -215,7 +219,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("a1111111-1111-1111-1111-111111111111"),
                             CategoryID = 1,
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(6609),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 716, DateTimeKind.Local).AddTicks(566),
                             Description = "Sarımsak, zeytinyağı, tuz ve domates ile süslenmiş kızarmış ekmek",
                             DishName = "Bruschetta",
                             ImageUrl = "Images/bruschetta.jpg",
@@ -226,7 +230,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("a2222222-2222-2222-2222-222222222222"),
                             CategoryID = 1,
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(7222),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 716, DateTimeKind.Local).AddTicks(1273),
                             Description = "Çıtır soğan halkaları, parmak tavuk, patates kızartması ve soslar ile",
                             DishName = "Kombo Tabağı",
                             ImageUrl = "Images/kombo_tabagi.jpg",
@@ -237,7 +241,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("a3333333-3333-3333-3333-333333333333"),
                             CategoryID = 1,
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(7237),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 716, DateTimeKind.Local).AddTicks(1277),
                             Description = "Çıtır yufka içinde peynirli sigara böreği",
                             DishName = "Sigara Böreği",
                             ImageUrl = "Images/sigara_boregi.jpg",
@@ -248,7 +252,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("a4444444-4444-4444-4444-444444444444"),
                             CategoryID = 1,
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(7240),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 716, DateTimeKind.Local).AddTicks(1318),
                             Description = "Nohut püresi, tahin, limon suyu ve zeytinyağı ile hazırlanan meze",
                             DishName = "Humus",
                             ImageUrl = "Images/humus.jpg",
@@ -259,7 +263,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("a5555555-5555-5555-5555-555555555555"),
                             CategoryID = 1,
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(7252),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 716, DateTimeKind.Local).AddTicks(1325),
                             Description = "Geleneksel Türk mutfağının vazgeçilmezi, baharatlı kırmızı mercimek çorbası",
                             DishName = "Mercimek Çorbası",
                             ImageUrl = "Images/mercimek_corbasi.jpg",
@@ -270,7 +274,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("a6666666-6666-6666-6666-666666666666"),
                             CategoryID = 1,
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(7258),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 716, DateTimeKind.Local).AddTicks(1335),
                             Description = "Mercimek, pirinç ve bulgur ile hazırlanan geleneksel çorba",
                             DishName = "Ezogelin Çorbası",
                             ImageUrl = "Images/ezogelin_corbasi.jpg",
@@ -281,10 +285,10 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("a7777777-7777-7777-7777-777777777777"),
                             CategoryID = 1,
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(7261),
-                            Description = "Sarımsaklı ve sirkeli geleneksel Türk çorbası",
-                            DishName = "İşkembe Çorbası",
-                            ImageUrl = "Images/iskembe_corbasi.jpg",
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 716, DateTimeKind.Local).AddTicks(1346),
+                            Description = "Terbiye edilmiş köy tavuğu çorbası",
+                            DishName = "Tavuk Çorbası",
+                            ImageUrl = "Images/tavuk_corbasi.jpg",
                             IsActive = true,
                             UnitPrice = 28.99m
                         },
@@ -292,7 +296,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("a8888888-8888-8888-8888-888888888888"),
                             CategoryID = 1,
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(7263),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 716, DateTimeKind.Local).AddTicks(1349),
                             Description = "Yoğurt ve pirinç ile hazırlanan nefis bir çorba",
                             DishName = "Yayla Çorbası",
                             ImageUrl = "Images/yayla_corbasi.jpg",
@@ -303,7 +307,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("b1111111-1111-1111-1111-111111111111"),
                             CategoryID = 2,
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(7265),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 716, DateTimeKind.Local).AddTicks(1351),
                             Description = "Baharatlarla harmanlanmış el yapımı ızgara köfte",
                             DishName = "Izgara Köfte",
                             ImageUrl = "Images/izgara_kofte.jpg",
@@ -314,7 +318,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("b2222222-2222-2222-2222-222222222222"),
                             CategoryID = 2,
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(7268),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 716, DateTimeKind.Local).AddTicks(1355),
                             Description = "Geleneksel Türk mantısı, yoğurt ve baharatlı domates sosu ile",
                             DishName = "Mantı",
                             ImageUrl = "Images/manti.jpg",
@@ -325,7 +329,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("b3333333-3333-3333-3333-333333333333"),
                             CategoryID = 2,
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(7270),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 716, DateTimeKind.Local).AddTicks(1357),
                             Description = "Marine edilmiş tavuk parçaları, ızgara sebzeler ile servis edilir",
                             DishName = "Tavuk Şiş",
                             ImageUrl = "Images/tavuk_sis.jpg",
@@ -336,7 +340,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("b4444444-4444-4444-4444-444444444444"),
                             CategoryID = 2,
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(7272),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 716, DateTimeKind.Local).AddTicks(1359),
                             Description = "Zeytinyağlı patlıcan yemeği, domates ve soğan ile",
                             DishName = "İmam Bayıldı",
                             ImageUrl = "Images/imam_bayildi.jpg",
@@ -347,7 +351,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("c1111111-1111-1111-1111-111111111111"),
                             CategoryID = 3,
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(7304),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 716, DateTimeKind.Local).AddTicks(1363),
                             Description = "Geleneksel Türk tatlısı, ince yufka katmanları arasında fındık, ceviz ile",
                             DishName = "Baklava",
                             ImageUrl = "Images/baklava.jpg",
@@ -358,7 +362,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("c2222222-2222-2222-2222-222222222222"),
                             CategoryID = 3,
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(7306),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 716, DateTimeKind.Local).AddTicks(1365),
                             Description = "Fırında pişirilmiş geleneksel Türk sütlü tatlısı",
                             DishName = "Sütlaç",
                             ImageUrl = "Images/sutlac.jpg",
@@ -369,7 +373,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("c3333333-3333-3333-3333-333333333333"),
                             CategoryID = 3,
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(7308),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 716, DateTimeKind.Local).AddTicks(1367),
                             Description = "Karamelize şekerle kaplı muhallebi tatlısı",
                             DishName = "Kazandibi",
                             ImageUrl = "Images/kazandibi.jpg",
@@ -380,7 +384,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("c4444444-4444-4444-4444-444444444444"),
                             CategoryID = 3,
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(7310),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 716, DateTimeKind.Local).AddTicks(1369),
                             Description = "Kadayıf ve peynir ile yapılan geleneksel Türk tatlısı",
                             DishName = "Künefe",
                             ImageUrl = "Images/kunefe.jpg",
@@ -391,7 +395,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("d1111111-1111-1111-1111-111111111111"),
                             CategoryID = 4,
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(7313),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 716, DateTimeKind.Local).AddTicks(1371),
                             Description = "Geleneksel Türk kahvesi, lokum ile servis edilir",
                             DishName = "Türk Kahvesi",
                             ImageUrl = "Images/turk_kahvesi.jpg",
@@ -402,7 +406,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("d2222222-2222-2222-2222-222222222222"),
                             CategoryID = 4,
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(7316),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 716, DateTimeKind.Local).AddTicks(1374),
                             Description = "Geleneksel Türk yoğurt içeceği",
                             DishName = "Ayran",
                             ImageUrl = "Images/ayran.jpg",
@@ -413,7 +417,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("d3333333-3333-3333-3333-333333333333"),
                             CategoryID = 4,
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(7318),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 716, DateTimeKind.Local).AddTicks(1375),
                             Description = "Geleneksel Türk turp içeceği",
                             DishName = "Şalgam Suyu",
                             ImageUrl = "Images/salgam_suyu.jpg",
@@ -424,7 +428,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                         {
                             ID = new Guid("d4444444-4444-4444-4444-444444444444"),
                             CategoryID = 4,
-                            CreateDate = new DateTime(2025, 1, 15, 19, 20, 48, 189, DateTimeKind.Local).AddTicks(7320),
+                            CreateDate = new DateTime(2025, 1, 17, 18, 13, 48, 716, DateTimeKind.Local).AddTicks(1378),
                             Description = "Taze sıkılmış limonata",
                             DishName = "Taze Limonata",
                             ImageUrl = "Images/limonata.jpg",
@@ -574,10 +578,6 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                     b.Property<Guid?>("ModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
@@ -601,7 +601,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                     b.HasOne("YemekSiparişProjesi_KatmanlıMimari.Entites.Models.User", "User")
                         .WithMany("Carts")
                         .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -612,25 +612,35 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                     b.HasOne("YemekSiparişProjesi_KatmanlıMimari.Entites.Models.Cart", "Cart")
                         .WithMany("CartItems")
                         .HasForeignKey("CartID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("YemekSiparişProjesi_KatmanlıMimari.Entites.Models.Dish", "Dish")
                         .WithMany()
                         .HasForeignKey("DishID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("YemekSiparişProjesi_KatmanlıMimari.Entites.Models.Order", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Cart");
 
                     b.Navigation("Dish");
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("YemekSiparişProjesi_KatmanlıMimari.Entites.Models.Dish", b =>
                 {
                     b.HasOne("YemekSiparişProjesi_KatmanlıMimari.Entites.Models.Category", null)
                         .WithMany("Dishes")
-                        .HasForeignKey("CategoryID1");
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("YemekSiparişProjesi_KatmanlıMimari.Entites.Models.Order", b =>
@@ -638,7 +648,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                     b.HasOne("YemekSiparişProjesi_KatmanlıMimari.Entites.Models.User", "User")
                         .WithMany("Orders")
                         .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -649,13 +659,13 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                     b.HasOne("YemekSiparişProjesi_KatmanlıMimari.Entites.Models.Dish", "Dish")
                         .WithMany("OrderDetails")
                         .HasForeignKey("DishID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("YemekSiparişProjesi_KatmanlıMimari.Entites.Models.Order", "Order")
                         .WithMany("OrderDetails")
                         .HasForeignKey("OrderID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Dish");
@@ -668,7 +678,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Migrations
                     b.HasOne("YemekSiparişProjesi_KatmanlıMimari.Entites.Models.Order", "Order")
                         .WithMany("Payments")
                         .HasForeignKey("OrderID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Order");
