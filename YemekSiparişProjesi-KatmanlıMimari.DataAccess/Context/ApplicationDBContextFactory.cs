@@ -10,7 +10,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDBContext>();
             optionsBuilder.UseSqlServer(
-                @"Data Source=DESKTOP-OJQ7MOU\SQLEXPRESS;
+                @"Data Source=DESKTOP-3IH3M3T\SQLEXPRESS01;
                   Initial Catalog=KatmanlıMimari_YemekSiprais;
                   Integrated Security=True;
                   Connect Timeout=30;

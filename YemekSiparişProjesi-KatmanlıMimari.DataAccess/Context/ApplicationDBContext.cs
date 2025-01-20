@@ -29,7 +29,7 @@ namespace YemekSiparişProjesi_KatmanlıMimari.DataAccess.Context
         // Optional: Override OnConfiguring for connection string
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-OJQ7MOU\SQLEXPRESS;Initial Catalog=KatmanlıMimari_YemekSiprais;Integrated Security=True;
+            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-3IH3M3T\SQLEXPRESS01;Initial Catalog=KatmanlıMimari_YemekSiprais;Integrated Security=True;
 Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
 
             optionsBuilder.EnableSensitiveDataLogging();

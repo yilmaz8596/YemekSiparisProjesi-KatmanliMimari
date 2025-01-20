@@ -1,6 +1,8 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
 using Microsoft.EntityFrameworkCore;
+using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using YemekSiparişProjesi_KatmanlıMimari.Business.Services;
 using YemekSiparişProjesi_KatmanlıMimari.Business.Validators;
 using YemekSiparişProjesi_KatmanlıMimari.DataAccess.Context;
@@ -21,6 +23,8 @@ namespace YemekSiparişProjesi_KatmanlıMimari.UI
         public Main1()
         {
             InitializeComponent();
+            
+
             var materialSkinManager = MaterialSkin.MaterialSkinManager.Instance;
 
             _dbContext = new ApplicationDBContext();
@@ -115,7 +119,11 @@ namespace YemekSiparişProjesi_KatmanlıMimari.UI
             materialListView2.Width = 1000;
 
 
+            ConfigureChart1();
+            ConfigureChart2();
+            
         }
+
 
 
         private void ValidateAndPlaceOrder()
@@ -279,7 +287,10 @@ namespace YemekSiparişProjesi_KatmanlıMimari.UI
 
         private void materialTabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (materialTabControl1.SelectedTab == istatistikler)
+            {
+                LoadStatistics(); // Grafiklerin yüklenmesi
+            }
         }
 
         private void Main1_Load(object sender, EventArgs e)
@@ -728,8 +739,8 @@ namespace YemekSiparişProjesi_KatmanlıMimari.UI
                 }
 
                 var userOrders = _dbContext.Orders
-                    .Include(o => o.OrderDetails)  
-                    .ThenInclude(od => od.Dish)    
+                    .Include(o => o.OrderDetails)
+                    .ThenInclude(od => od.Dish)
                     .Where(o => o.UserID == existingUser.ID)
                     .ToList();
 
@@ -769,6 +780,108 @@ namespace YemekSiparişProjesi_KatmanlıMimari.UI
 
         private void materialTextBox24_Click(object sender, EventArgs e)
         {
+        }
+        private void ConfigureChart1()
+        {  //Kategorilere göre sipariş sayısı
+            var categoryData = _dbContext.OrderDetails
+                .Join(_dbContext.Dishes, od => od.DishID, d => d.ID, (od, d) => new { od, d })
+                .Join(_dbContext.Categories, od => od.d.CategoryID, c => c.ID, (od, c) => new { od, c })
+                .GroupBy(oc => oc.c.CategoryName) //Kategorilerin adına göre grupla
+                .Select(g => new { CategoryName = g.Key, OrderCount = g.Count() })
+                .ToList();
+
+            if (categoryData.Count == 0)
+            {
+                MessageBox.Show("Kategoriler için veri bulunamadı.");
+            }
+
+            chart1.Series.Clear();
+            ChartArea chartArea1 = new ChartArea();
+            chart1.ChartAreas.Clear();
+            chart1.ChartAreas.Add(chartArea1);
+            
+            Series series1 = new Series("CategoryOrders")
+            {
+                ChartType = SeriesChartType.Pie,
+            };
+
+            foreach (var item in categoryData)
+            {
+                series1.Points.AddXY(item.CategoryName, item.OrderCount);
+            }
+            chart1.Series.Add(series1);
+
+            chart1.Titles.Clear();
+            chart1.Titles.Add("Kategorilere Göre Sipariş Sayısı");
+            chart1.ChartAreas[0].AxisX.Title = "Kategori";
+            chart1.ChartAreas[0].AxisY.Title = "Sipariş Sayısı";
+        }
+        private void ConfigureChart2()
+        { //En popüler yemekler
+            var popularDishes = _dbContext.OrderDetails
+                .Join(_dbContext.Dishes, od => od.DishID, d => d.ID, (od, d) => new { od, d })
+                .GroupBy(od => od.d.DishName) //Yemek adı üzerinden grupla
+                .Select(g => new { DishName = g.Key, DishCount = g.Count() })
+                .OrderByDescending(g => g.DishCount)
+                .ToList();
+
+            if (popularDishes.Count == 0)
+            {
+                MessageBox.Show("Popüler yemekler için veri bulunamadı.");
+            }
+
+            chart2.Series.Clear();
+            ChartArea chartArea2 = new ChartArea();
+            chart2.ChartAreas.Clear();
+            chart2.ChartAreas.Add(chartArea2);
+
+
+            Series series2 = new Series("TopSellingDishes")
+            {
+                ChartType = SeriesChartType.Funnel,
+            };
+            foreach (var item in popularDishes)
+            {
+                series2.Points.AddXY(item.DishName, item.DishCount);
+            }
+            chart2.Series.Add(series2);
+
+            chart2.Titles.Clear();
+            chart2.Titles.Add("En Popüler Ürün");
+            chart2.ChartAreas[0].AxisX.Title = "Ürünler";
+            chart2.ChartAreas[0].AxisY.Title = "Satış Sayısı";
+        }
+
+        
+        private void LoadStatistics()
+        {
+            ConfigureChart1();//Kategorlere göre sipariş sayısı
+            ConfigureChart2(); //En popüler yemekler
+
+
+        }
+        private void materialTabPageStatistics_Click(object sender, EventArgs e)
+        {
+            if (chart1.Series.Count==0 && chart2.Series.Count==0)
+            {
+                LoadStatistics(); // Grafiklerin yüklenmesi
+            }
+            
+        }
+
+        private void istatistikler_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void chart2_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

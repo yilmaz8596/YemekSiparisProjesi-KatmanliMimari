@@ -30,6 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main1));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             ımageList1 = new ImageList(components);
             siparisGecmisi = new TabPage();
             materialButton23 = new MaterialSkin.Controls.MaterialButton();
@@ -147,6 +153,8 @@
             label2 = new Label();
             label1 = new Label();
             istatistikler = new TabPage();
+            chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             siparisGecmisi.SuspendLayout();
             sepetim.SuspendLayout();
             materialCard21.SuspendLayout();
@@ -200,6 +208,9 @@
             materialTabControl1.SuspendLayout();
             anaSayfa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            istatistikler.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chart2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             SuspendLayout();
             // 
             // ımageList1
@@ -255,7 +266,7 @@
             label30.ForeColor = Color.WhiteSmoke;
             label30.Location = new Point(1161, 274);
             label30.Name = "label30";
-            label30.Size = new Size(257, 17);
+            label30.Size = new Size(212, 14);
             label30.TabIndex = 3;
             label30.Text = "Lütfen e-posta adresinizi girin";
             // 
@@ -295,7 +306,7 @@
             label29.ForeColor = Color.GreenYellow;
             label29.Location = new Point(363, 48);
             label29.Name = "label29";
-            label29.Size = new Size(137, 30);
+            label29.Size = new Size(111, 24);
             label29.TabIndex = 1;
             label29.Text = "Siparişler";
             // 
@@ -403,7 +414,7 @@
             label28.ForeColor = Color.WhiteSmoke;
             label28.Location = new Point(523, 192);
             label28.Name = "label28";
-            label28.Size = new Size(133, 20);
+            label28.Size = new Size(107, 16);
             label28.TabIndex = 11;
             label28.Text = "Müşteri eposta";
             // 
@@ -414,7 +425,7 @@
             label27.ForeColor = Color.WhiteSmoke;
             label27.Location = new Point(523, 72);
             label27.Name = "label27";
-            label27.Size = new Size(160, 20);
+            label27.Size = new Size(129, 16);
             label27.TabIndex = 10;
             label27.Text = "Müşteri telefon no";
             // 
@@ -425,7 +436,7 @@
             label26.ForeColor = Color.WhiteSmoke;
             label26.Location = new Point(17, 320);
             label26.Name = "label26";
-            label26.Size = new Size(127, 20);
+            label26.Size = new Size(102, 16);
             label26.TabIndex = 9;
             label26.Text = "Müşteri adresi";
             // 
@@ -436,7 +447,7 @@
             label25.ForeColor = Color.WhiteSmoke;
             label25.Location = new Point(17, 192);
             label25.Name = "label25";
-            label25.Size = new Size(130, 20);
+            label25.Size = new Size(104, 16);
             label25.TabIndex = 8;
             label25.Text = "Müşteri soyadı";
             // 
@@ -447,7 +458,7 @@
             label24.ForeColor = Color.WhiteSmoke;
             label24.Location = new Point(17, 72);
             label24.Name = "label24";
-            label24.Size = new Size(101, 20);
+            label24.Size = new Size(81, 16);
             label24.TabIndex = 7;
             label24.Text = "Müşteri adı";
             // 
@@ -458,7 +469,7 @@
             label23.ForeColor = Color.WhiteSmoke;
             label23.Location = new Point(306, 36);
             label23.Name = "label23";
-            label23.Size = new Size(187, 28);
+            label23.Size = new Size(150, 22);
             label23.TabIndex = 6;
             label23.Text = "Sipariş Formu";
             // 
@@ -644,10 +655,10 @@
             baslangiclar.Controls.Add(materialCard3);
             baslangiclar.Controls.Add(materialCard2);
             baslangiclar.Controls.Add(materialCard1);
-            baslangiclar.Location = new Point(4, 27);
+            baslangiclar.Location = new Point(4, 24);
             baslangiclar.Name = "baslangiclar";
             baslangiclar.Padding = new Padding(3);
-            baslangiclar.Size = new Size(1534, 452);
+            baslangiclar.Size = new Size(1534, 455);
             baslangiclar.TabIndex = 0;
             baslangiclar.Text = "Başlangıçlar";
             baslangiclar.Click += baslangiclar_Click_1;
@@ -673,7 +684,7 @@
             label6.AutoSize = true;
             label6.Location = new Point(36, 164);
             label6.Name = "label6";
-            label6.Size = new Size(119, 17);
+            label6.Size = new Size(100, 14);
             label6.TabIndex = 3;
             label6.Text = "Kombo Tabağı";
             label6.Click += label6_Click;
@@ -729,7 +740,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(47, 173);
             label5.Name = "label5";
-            label5.Size = new Size(117, 17);
+            label5.Size = new Size(97, 14);
             label5.TabIndex = 3;
             label5.Text = "Sigara Böreği";
             label5.Click += label5_Click;
@@ -785,7 +796,7 @@
             label4.AutoSize = true;
             label4.Location = new Point(36, 164);
             label4.Name = "label4";
-            label4.Size = new Size(62, 17);
+            label4.Size = new Size(51, 14);
             label4.TabIndex = 3;
             label4.Text = "Humus";
             label4.Click += label4_Click;
@@ -845,7 +856,7 @@
             label3.ForeColor = Color.FromArgb(222, 0, 0, 0);
             label3.Location = new Point(47, 164);
             label3.Name = "label3";
-            label3.Size = new Size(99, 17);
+            label3.Size = new Size(82, 14);
             label3.TabIndex = 2;
             label3.Text = "Bruschetta";
             label3.Click += label3_Click;
@@ -890,10 +901,10 @@
             corbalar.Controls.Add(materialCard6);
             corbalar.Controls.Add(materialCard7);
             corbalar.Controls.Add(materialCard8);
-            corbalar.Location = new Point(4, 29);
+            corbalar.Location = new Point(4, 24);
             corbalar.Name = "corbalar";
             corbalar.Padding = new Padding(3);
-            corbalar.Size = new Size(1534, 450);
+            corbalar.Size = new Size(1534, 455);
             corbalar.TabIndex = 1;
             corbalar.Text = "Çorbalar";
             // 
@@ -918,7 +929,7 @@
             label7.AutoSize = true;
             label7.Location = new Point(27, 172);
             label7.Name = "label7";
-            label7.Size = new Size(123, 17);
+            label7.Size = new Size(103, 14);
             label7.TabIndex = 3;
             label7.Text = "Tavuk Çorbası";
             label7.Click += label7_Click;
@@ -974,7 +985,7 @@
             label8.AutoSize = true;
             label8.Location = new Point(47, 173);
             label8.Name = "label8";
-            label8.Size = new Size(118, 17);
+            label8.Size = new Size(100, 14);
             label8.TabIndex = 3;
             label8.Text = "Yayla Çorbası";
             label8.Click += label8_Click;
@@ -1030,7 +1041,7 @@
             label9.AutoSize = true;
             label9.Location = new Point(27, 173);
             label9.Name = "label9";
-            label9.Size = new Size(144, 17);
+            label9.Size = new Size(118, 14);
             label9.TabIndex = 3;
             label9.Text = "Ezogelin Çorbası";
             label9.Click += label9_Click;
@@ -1086,7 +1097,7 @@
             label10.AutoSize = true;
             label10.Location = new Point(47, 173);
             label10.Name = "label10";
-            label10.Size = new Size(153, 17);
+            label10.Size = new Size(126, 14);
             label10.TabIndex = 2;
             label10.Text = "Mercimek Çorbası";
             label10.Click += label10_Click;
@@ -1128,9 +1139,9 @@
             anaYemekler.Controls.Add(materialCard10);
             anaYemekler.Controls.Add(materialCard11);
             anaYemekler.Controls.Add(materialCard12);
-            anaYemekler.Location = new Point(4, 29);
+            anaYemekler.Location = new Point(4, 24);
             anaYemekler.Name = "anaYemekler";
-            anaYemekler.Size = new Size(1534, 450);
+            anaYemekler.Size = new Size(1534, 455);
             anaYemekler.TabIndex = 2;
             anaYemekler.Text = "Ana Yemekler";
             // 
@@ -1155,7 +1166,7 @@
             label11.AutoSize = true;
             label11.Location = new Point(36, 173);
             label11.Name = "label11";
-            label11.Size = new Size(108, 17);
+            label11.Size = new Size(92, 14);
             label11.TabIndex = 3;
             label11.Text = "İmam Bayıldı";
             label11.Click += label11_Click;
@@ -1211,7 +1222,7 @@
             label12.AutoSize = true;
             label12.Location = new Point(47, 173);
             label12.Name = "label12";
-            label12.Size = new Size(87, 17);
+            label12.Size = new Size(72, 14);
             label12.TabIndex = 3;
             label12.Text = "Tavuk Şiş";
             label12.Click += label12_Click;
@@ -1267,7 +1278,7 @@
             label13.AutoSize = true;
             label13.Location = new Point(36, 173);
             label13.Name = "label13";
-            label13.Size = new Size(53, 17);
+            label13.Size = new Size(44, 14);
             label13.TabIndex = 3;
             label13.Text = "Mantı";
             label13.Click += label13_Click;
@@ -1323,7 +1334,7 @@
             label14.AutoSize = true;
             label14.Location = new Point(47, 173);
             label14.Name = "label14";
-            label14.Size = new Size(106, 17);
+            label14.Size = new Size(88, 14);
             label14.TabIndex = 2;
             label14.Text = "Izgara Köfte";
             label14.Click += label14_Click;
@@ -1365,9 +1376,9 @@
             tatlilar.Controls.Add(materialCard14);
             tatlilar.Controls.Add(materialCard15);
             tatlilar.Controls.Add(materialCard16);
-            tatlilar.Location = new Point(4, 29);
+            tatlilar.Location = new Point(4, 24);
             tatlilar.Name = "tatlilar";
-            tatlilar.Size = new Size(1534, 450);
+            tatlilar.Size = new Size(1534, 455);
             tatlilar.TabIndex = 3;
             tatlilar.Text = "Tatlılar";
             // 
@@ -1392,7 +1403,7 @@
             label15.AutoSize = true;
             label15.Location = new Point(36, 178);
             label15.Name = "label15";
-            label15.Size = new Size(60, 17);
+            label15.Size = new Size(50, 14);
             label15.TabIndex = 3;
             label15.Text = "Sütlaç";
             label15.Click += label15_Click;
@@ -1448,7 +1459,7 @@
             label16.AutoSize = true;
             label16.Location = new Point(47, 173);
             label16.Name = "label16";
-            label16.Size = new Size(65, 17);
+            label16.Size = new Size(53, 14);
             label16.TabIndex = 3;
             label16.Text = "Künefe";
             label16.Click += label16_Click;
@@ -1504,7 +1515,7 @@
             label17.AutoSize = true;
             label17.Location = new Point(36, 173);
             label17.Name = "label17";
-            label17.Size = new Size(84, 17);
+            label17.Size = new Size(71, 14);
             label17.TabIndex = 3;
             label17.Text = "Kazandibi";
             label17.Click += label17_Click;
@@ -1560,7 +1571,7 @@
             label18.AutoSize = true;
             label18.Location = new Point(47, 173);
             label18.Name = "label18";
-            label18.Size = new Size(70, 17);
+            label18.Size = new Size(60, 14);
             label18.TabIndex = 2;
             label18.Text = "Baklava";
             label18.Click += label18_Click;
@@ -1602,9 +1613,9 @@
             icecekler.Controls.Add(materialCard18);
             icecekler.Controls.Add(materialCard19);
             icecekler.Controls.Add(materialCard20);
-            icecekler.Location = new Point(4, 29);
+            icecekler.Location = new Point(4, 24);
             icecekler.Name = "icecekler";
-            icecekler.Size = new Size(1534, 450);
+            icecekler.Size = new Size(1534, 455);
             icecekler.TabIndex = 4;
             icecekler.Text = "İçecekler";
             // 
@@ -1630,7 +1641,7 @@
             label19.AutoSize = true;
             label19.Location = new Point(32, 173);
             label19.Name = "label19";
-            label19.Size = new Size(114, 17);
+            label19.Size = new Size(94, 14);
             label19.TabIndex = 3;
             label19.Text = "Türk Kahvesi";
             label19.Click += label19_Click;
@@ -1687,7 +1698,7 @@
             label20.AutoSize = true;
             label20.Location = new Point(47, 173);
             label20.Name = "label20";
-            label20.Size = new Size(126, 17);
+            label20.Size = new Size(106, 14);
             label20.TabIndex = 3;
             label20.Text = "Taze Limonata";
             label20.Click += label20_Click;
@@ -1743,7 +1754,7 @@
             label21.AutoSize = true;
             label21.Location = new Point(36, 173);
             label21.Name = "label21";
-            label21.Size = new Size(110, 17);
+            label21.Size = new Size(92, 14);
             label21.TabIndex = 3;
             label21.Text = "Şalgam Suyu";
             label21.Click += label21_Click;
@@ -1800,7 +1811,7 @@
             label22.AutoSize = true;
             label22.Location = new Point(47, 173);
             label22.Name = "label22";
-            label22.Size = new Size(55, 17);
+            label22.Size = new Size(47, 14);
             label22.TabIndex = 2;
             label22.Text = "Ayran";
             label22.Click += label22_Click;
@@ -1926,7 +1937,7 @@
             label2.ForeColor = Color.FromArgb(255, 64, 129);
             label2.Location = new Point(-1, 318);
             label2.Name = "label2";
-            label2.Size = new Size(714, 64);
+            label2.Size = new Size(580, 52);
             label2.TabIndex = 1;
             label2.Text = "Siparişinizi Oluşturun!";
             // 
@@ -1937,23 +1948,64 @@
             label1.ForeColor = Color.FromArgb(255, 64, 129);
             label1.Location = new Point(7, 229);
             label1.Name = "label1";
-            label1.Size = new Size(380, 64);
+            label1.Size = new Size(310, 52);
             label1.TabIndex = 0;
             label1.Text = "Hoşgeldiniz";
             // 
             // istatistikler
             // 
             istatistikler.BackColor = Color.FromArgb(50, 50, 50);
+            istatistikler.Controls.Add(chart2);
+            istatistikler.Controls.Add(chart1);
             istatistikler.ImageKey = "icons8-statistics-52.png";
             istatistikler.Location = new Point(4, 39);
             istatistikler.Name = "istatistikler";
             istatistikler.Size = new Size(1582, 522);
             istatistikler.TabIndex = 5;
             istatistikler.Text = "İstatistikler";
+            istatistikler.Click += istatistikler_Click;
+            // 
+            // chart2
+            // 
+            chart2.BackColor = Color.GreenYellow;
+            chart2.BorderlineColor = Color.Khaki;
+            chartArea1.Name = "ChartArea1";
+            chart2.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chart2.Legends.Add(legend1);
+            chart2.Location = new Point(442, 44);
+            chart2.Name = "chart2";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chart2.Series.Add(series1);
+            chart2.Size = new Size(322, 312);
+            chart2.TabIndex = 1;
+            chart2.Text = "chart2";
+            chart2.Click += chart2_Click;
+            // 
+            // chart1
+            // 
+            chart1.BackColor = Color.GreenYellow;
+            chart1.BorderlineColor = Color.Khaki;
+            chartArea2.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            chart1.Legends.Add(legend2);
+            chart1.Location = new Point(75, 44);
+            chart1.Name = "chart1";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            chart1.Series.Add(series2);
+            chart1.Size = new Size(322, 312);
+            chart1.TabIndex = 0;
+            chart1.Text = "chart1";
+            chart1.Click += chart1_Click;
             // 
             // Main1
             // 
-            AutoScaleDimensions = new SizeF(10F, 17F);
+            AutoScaleDimensions = new SizeF(8F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1594, 640);
@@ -2044,6 +2096,9 @@
             anaSayfa.ResumeLayout(false);
             anaSayfa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            istatistikler.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chart2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             ResumeLayout(false);
         }
 
@@ -2165,5 +2220,7 @@
         private MaterialSkin.Controls.MaterialTextBox2 materialTextBox24;
         private Label label30;
         private MaterialSkin.Controls.MaterialButton materialButton23;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
     }
 }
